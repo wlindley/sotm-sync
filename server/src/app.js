@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-	socket.emit('message', {hello: 'world'});
+	socket.emit('message', "hello, socket.io!");
 	socket.on('message', (msg) => {
 		console.log(msg);
 	});
