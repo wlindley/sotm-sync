@@ -118,6 +118,11 @@
           "text",
           "jquery",
           {
+            "name": "socket.io-client",
+            "path": "../node_modules/socket.io-client",
+            "main": "socket.io.min"
+          },
+          {
             "name": "bootstrap",
             "path": "../node_modules/bootstrap/dist",
             "main": "js/bootstrap.min",
