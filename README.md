@@ -3,3 +3,4 @@ Game state synchronizer for SotM. Uses a socket.io server to share state changes
 
 ##Geting Started
 1. Run `npm install -g aurelia-cli`
+1. cd into `server` and `client` each and run `npm install`
