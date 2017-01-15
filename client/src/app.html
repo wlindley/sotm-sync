@@ -1,6 +1,8 @@
 <template>
   <require from="bootstrap/css/bootstrap.css"></require>
   <require from="./styles.css"></require>
-  
+
+  <loading-indicator loading.bind="isLoading"></loading-indicator>
+
   <h1>${message}</h1>
 </template>
