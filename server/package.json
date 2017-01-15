@@ -1,0 +1,49 @@
+{
+	"name": "sotm-sync-server",
+	"version": "0.0.1",
+	"private": false,
+	"scripts": {
+		"start": "node src/app",
+		"test": "istanbul cover --include-all-sources jasmine-node test",
+		"lint": "eslint .",
+		"all": "npm run lint && npm test"
+	},
+	"dependencies": {
+		"async": "^2.1.4",
+		"body-parser": "^1.15.2",
+		"express": "^4.14.0",
+		"socket.io": "^1.7.2"
+	},
+	"devDependencies": {
+		"eslint": "^3.13.1",
+		"istanbul": "^0.4.5",
+		"jasmine-node": "^1.14.5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wlindley/sotm-sync.git"
+	},
+	"eslineConfig": {
+			"extends": "eslint:recommended",
+			"rules": {
+					"indent": ["error", "tab"],
+					"linebreak-style": ["error", "unix"],
+					"semi": ["error", "always"],
+					"eqeqeq": "error",
+					"callback-return": "error",
+					"eol-last": "error",
+					"no-trailing-spaces": "error",
+					"no-unused-vars": "error",
+					"arrow-body-style": ["error", "as-needed"]
+			},
+			"env": {
+					"node": true,
+					"jamine": true,
+					"es6": true
+			},
+			"ecmaFeatures" : {
+					"blockBindings": true,
+					"templateStrings": true
+			}
+	}
+}
