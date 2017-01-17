@@ -1,23 +1,21 @@
-import io from 'socket.io-client';
-let socket = io.connect('http://localhost:80');
+import {Api} from './api';
 
 export class App {
-	constructor() {
+	static inject() { return [Api]; }
+
+	constructor(api) {
+		this.api = api;
 	}
 
 	activate() {
-		socket.on('message', (msg) => {
-			console.log('message from server: ', msg);
-			setTimeout(() => {
-				socket.emit('message', 'client connected');
-			}, 2000);
-		});
+		this.api.init();
 	}
 
 	configureRouter(config, router) {
 		config.title = "SotM Sync";
 		config.map([
-			{route: '', moduleId: 'landing', name: 'landing'}
+			{route: '', moduleId: 'landing', name: 'landing'},
+			{route: 'game/:id', moduleId: 'game', name: 'game'}
 		]);
 		this.router = router;
 	}
