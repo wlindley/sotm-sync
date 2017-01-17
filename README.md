@@ -10,3 +10,11 @@ Game state synchronizer for SotM. Uses a socket.io server to share state changes
 ##Running the Application
 1. Open a bash prompt, cd into `server`, and execute `npm start`
 1. Open another bash prompt, cd into `client`, and execute `au run --watch`
+
+##Running Tests
+- Client
+	1. cd into `client`
+	1. Run `npm run all`
+- Server
+	1. cd into `server`
+	1. Run `au test` (you can add `--watch` if you want tests to run whenever a file changes)
