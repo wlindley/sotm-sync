@@ -1,0 +1,18 @@
+<template>
+	<h1 class="text-center">Sentinels of the Multiverse Sync</h1>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+				<form class="form" submit.delegate="join()">
+					<input type="text" class="form-control" placeholder="Secret code" value.bind="gameId">
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Join Game</button>
+				</form>
+			</div>
+
+			<div class="col-xs-6">
+				<button class="btn btn-lg btn-success btn-block">Create Game</button>
+			</div>
+		</div>
+	</div>
+</template>

@@ -3,19 +3,26 @@ let socket = io.connect('http://localhost:80');
 
 export class App {
 	constructor() {
-		this.message = 'Connecting...';
 	}
 
 	activate() {
 		socket.on('message', (msg) => {
-			this.message = msg;
+			console.log('message from server: ', msg);
 			setTimeout(() => {
 				socket.emit('message', 'client connected');
 			}, 2000);
 		});
 	}
 
+	configureRouter(config, router) {
+		config.title = "SotM Sync";
+		config.map([
+			{route: '', moduleId: 'landing', name: 'landing'}
+		]);
+		this.router = router;
+	}
+
 	get isLoading() {
-		return false;
+		return this.router.isNavigating;
 	}
 }
