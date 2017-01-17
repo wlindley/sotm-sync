@@ -1,9 +1,15 @@
-const app = require('express')();
+const path = require('path');
+const express = require('express');
+const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-app.get('/', (req, res) => {
-	res.send('SotM Sync');
+app.use(express.static(path.join(__dirname, '../../client')));
+
+app.post('/create-game', (req, res) => {
+	res.json({
+		gameId: '1234'
+	});
 });
 
 io.on('connection', (socket) => {

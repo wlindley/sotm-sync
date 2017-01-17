@@ -14,5 +14,13 @@
 				<button class="btn btn-lg btn-success btn-block" click.delegate="create()">Create Game</button>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="alert alert-danger" if.bind="error">
+					${error}
+				</div>
+			</div>
+		</div>
 	</div>
 </template>

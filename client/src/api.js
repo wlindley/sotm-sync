@@ -4,8 +4,21 @@ let socket = io.connect('http://localhost:80');
 
 export class Api {
 	constructor() {
-		this.client = new HttpClient(config => {
-			config.withBaseUrl('http://localhost:80/');
+		this.client = new HttpClient();
+		this.client.configure(config => {
+			config.withInterceptor({
+				request(req) {
+					let url = req.url.replace('localhost:9000', 'localhost:80');
+					return new Request(url, {
+						method: req.method,
+						mode: 'no-cors',//req.mode,
+						credentials: req.credentials
+					});
+				},
+				response(res) {
+					return res;
+				}
+			});
 		});
 	}
 
@@ -19,21 +32,20 @@ export class Api {
 	}
 
 	joinGame(gameId) {
-		
+		socket.emit('join-game', {gameId: gameId});
 	}
 
 	createGame() {
 		return new Promise((resolve, reject) => {
-			this.client.fetch('create-game').then(response => {
+			this.client.fetch('create-game', {method: 'POST'}).then(response => {
 				if (response.ok) {
-					response.json().then(data => {
+					return response.json().then(data => {
 						resolve(data.gameId);
 					});
 				} else {
-					return reject(new Error(response.status));
+					reject(new Error(response.status));
 				}
 			}).catch(error => {
-				console.log(error);
 				reject(new Error(error));
 			});
 		});

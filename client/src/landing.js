@@ -10,10 +10,12 @@ export class Landing {
 	}
 
 	join() {
+		this.error = null;
 		this._joinGame(this.gameId);
 	}
 
 	create() {
+		this.error = null;
 		this.api.createGame().then(gameId => {
 			this._joinGame(gameId);
 		}).catch(reason => {
