@@ -1,6 +1,4 @@
 <template>
-	<h1 class="text-center">Sentinels of the Multiverse Sync</h1>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
@@ -11,7 +9,15 @@
 			</div>
 
 			<div class="col-xs-6">
-				<button class="btn btn-lg btn-success btn-block">Create Game</button>
+				<button class="btn btn-lg btn-success btn-block" click.delegate="create()">Create Game</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="alert alert-danger" if.bind="error">
+					${error}
+				</div>
 			</div>
 		</div>
 	</div>
