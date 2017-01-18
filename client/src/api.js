@@ -1,9 +1,14 @@
 import io from 'socket.io-client';
 import {HttpClient} from 'aurelia-fetch-client';
+import * as messages from './messages';
+import {EventAggregator} from 'aurelia-event-aggregator';
 let socket = io.connect('http://localhost:80');
 
 export class Api {
-	constructor() {
+	static inject() { return [EventAggregator]; }
+
+	constructor(ea) {
+		this.ea = ea;
 		this.client = new HttpClient();
 		this.client.configure(config => {
 			config.withInterceptor({
@@ -23,11 +28,8 @@ export class Api {
 	}
 
 	init() {
-		socket.on('message', (msg) => {
-			console.log('message from server: ', msg);
-			setTimeout(() => {
-				socket.emit('message', 'client connected');
-			}, 2000);
+		socket.on('game-state', (args) => {
+			this.ea.publish(new messages.StateSync(args.state));
 		});
 	}
 
