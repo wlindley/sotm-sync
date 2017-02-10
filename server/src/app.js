@@ -1,6 +1,7 @@
 const Game = require('./game');
 const path = require('path');
 const express = require('express');
+const data = require('./data');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -14,6 +15,18 @@ app.post('/create-game', (req, res) => {
 	});
 });
 
+app.get('/villains', (req, res) => {
+	res.json(data.villains);
+});
+
+app.get('/environments', (req, res) => {
+	res.json(data.environments);
+});
+
+app.get('/heroes', (req, res) => {
+	res.json(data.heroes);
+});
+
 io.on('connection', (socket) => {
 	socket.on('join-game', (args) => {
 		if (!games.has(args.gameId)) {
@@ -23,6 +36,11 @@ io.on('connection', (socket) => {
 			socket.leave(roomId);
 		}
 		socket.join(args.gameId);
+		socket.emit('game-state', {state: games.get(args.gameId).serializeState()});
+	});
+
+	socket.on('modify-hp', (args) => {
+		games.get(args.gameId).modifyHp(args.entityId, args.delta);
 		socket.emit('game-state', {state: games.get(args.gameId).serializeState()});
 	});
 });

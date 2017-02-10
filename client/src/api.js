@@ -25,6 +25,7 @@ export class Api {
 				}
 			});
 		});
+		this.gameId = null;
 	}
 
 	init() {
@@ -34,6 +35,7 @@ export class Api {
 	}
 
 	joinGame(gameId) {
+		this.gameId = gameId;
 		socket.emit('join-game', {gameId: gameId});
 	}
 
@@ -51,5 +53,9 @@ export class Api {
 				reject(new Error(error));
 			});
 		});
+	}
+
+	modifyHp(entityId, hpDelta) {
+		socket.emit('modify-hp', {entityId: entityId, delta: hpDelta, gameId: this.gameId});
 	}
 }
