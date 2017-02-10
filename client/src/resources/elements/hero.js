@@ -26,11 +26,23 @@ export let Hero = decorators(
 		return this.data.initialHp;
 	}
 
+	get targets() {
+		return this.data.targets;
+	}
+
+	get showTargetCreationDropdown() {
+		return this.data.targets && 0 < this.data.targets.length;
+	}
+
 	incrementHp() {
 		this.api.modifyHp(this.id, 1);
 	}
 
 	decrementHp() {
 		this.api.modifyHp(this.id, -1);
+	}
+
+	createTarget(subTargetName) {
+		this.api.createTarget(this.id, subTargetName);
 	}
 });

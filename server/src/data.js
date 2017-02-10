@@ -33,7 +33,19 @@ module.exports = {
 		{
 			type: "hero",
 			name: "Unity",
-			initialHp: 24
+			initialHp: 24,
+			targets: [
+				{
+					type: "hero",
+					name: "Raptorbot",
+					initialHp: 5
+				},
+				{
+					type: "hero",
+					name: "Platformbot",
+					initialHp: 3
+				}
+			]
 		}
 	]
 };

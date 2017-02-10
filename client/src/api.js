@@ -56,6 +56,10 @@ export class Api {
 	}
 
 	modifyHp(entityId, hpDelta) {
-		socket.emit('modify-hp', {entityId: entityId, delta: hpDelta, gameId: this.gameId});
+		socket.emit('modify-hp', {gameId: this.gameId, entityId: entityId, delta: hpDelta});
+	}
+
+	createTarget(entityId, subTargetName) {
+		socket.emit('create-target', {gameId: this.gameId, entityId: entityId, name: subTargetName});
 	}
 }
