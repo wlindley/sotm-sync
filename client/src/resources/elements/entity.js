@@ -8,6 +8,9 @@ export let Entity = decorators(
 
 	constructor(api) {
 		this.api = api;
+		this.createTargetDelegates = {
+			select: (name) => this.createTarget(name)
+		};
 	}
 
 	get id() {
@@ -31,7 +34,7 @@ export let Entity = decorators(
 	}
 
 	get targets() {
-		return this.data.targets;
+		return this.data.targets.map(t => t.name);
 	}
 
 	get showTargetCreationDropdown() {
