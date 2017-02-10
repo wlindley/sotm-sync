@@ -13,15 +13,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" if.bind="isRunning">
+		<div class="row">
 			<div class="col-xs-12">
-				<div class="row"><div class="col-xs-12">
-					<h2>Game Setup</h2>
-				</div></div>
 				<div class="row"><div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Villains</h2>
+							<dropdown-button label="Add" options.bind="villainOptions" delegates.bind="villainDelegates"></dropdown-button>
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="villain of villains">
@@ -30,10 +28,12 @@
 						</ul>
 					</div>
 				</div></div>
+
 				<div class="row"><div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Environments</h2>
+							<dropdown-button label="Add" options.bind="environmentOptions" delegates.bind="environmentDelegates"></dropdown-button>
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="environment of environments">
@@ -42,10 +42,12 @@
 						</ul>
 					</div>
 				</div></div>
+
 				<div class="row"><div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Heroes</h2>
+							<dropdown-button label="Add" options.bind="heroOptions" delegates.bind="heroDelegates"></dropdown-button>
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="hero of heroes">

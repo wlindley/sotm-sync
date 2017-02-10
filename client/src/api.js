@@ -34,6 +34,18 @@ export class Api {
 		});
 	}
 
+	retrieveVillains() {
+		return this._fetch('villains');
+	}
+
+	retrieveEnvironments() {
+		return this._fetch('environments');
+	}
+
+	retrieveHeroes() {
+		return this._fetch('heroes');
+	}
+
 	joinGame(gameId) {
 		this.gameId = gameId;
 		socket.emit('join-game', {gameId: gameId});
@@ -55,6 +67,18 @@ export class Api {
 
 	createTarget(entityId, subTargetName) {
 		socket.emit('create-target', {gameId: this.gameId, entityId: entityId, name: subTargetName});
+	}
+
+	createVillain(name) {
+		socket.emit('create-villain', {gameId: this.gameId, name: name});
+	}
+
+	createEnvironment(name) {
+		socket.emit('create-environment', {gameId: this.gameId, name: name});
+	}
+
+	createHero(name) {
+		socket.emit('create-hero', {gameId: this.gameId, name: name});
 	}
 
 	_fetch(path, method='GET') {
