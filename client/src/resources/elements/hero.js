@@ -1,14 +1,25 @@
 import {bindable, decorators} from 'aurelia-framework';
+import {Api} from '../../api';
 
 export let Hero = decorators(
 	bindable({name: 'data', defaultValue: {}})
 ).on(class {
+	static inject() { return [Api]; }
+
+	constructor(api) {
+		this.api = api;
+	}
+
+	get id() {
+		return this.data.id;
+	}
+
 	get name() {
 		return this.data.name;
 	}
 
 	get currentHp() {
-		return this.data.initialHp;
+		return this.data.currentHp;
 	}
 
 	get initialHp() {
@@ -16,10 +27,10 @@ export let Hero = decorators(
 	}
 
 	incrementHp() {
-		console.log('increment hp for ' + this.name);
+		this.api.modifyHp(this.id, 1);
 	}
 
 	decrementHp() {
-		console.log('decrement hp for ' + this.name);
+		this.api.modifyHp(this.id, -1);
 	}
 });
