@@ -7,6 +7,10 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const games = new Map();
 
+let broadcastGameState = (gameId) => {
+	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});
+};
+
 app.use(express.static(path.join(__dirname, '../../client')));
 
 app.post('/create-game', (req, res) => {
@@ -41,7 +45,12 @@ io.on('connection', (socket) => {
 
 	socket.on('modify-hp', (args) => {
 		games.get(args.gameId).modifyHp(args.entityId, args.delta);
-		socket.emit('game-state', {state: games.get(args.gameId).serializeState()});
+		broadcastGameState(args.gameId);
+	});
+
+	socket.on('create-target', (args) => {
+		games.get(args.gameId).createTarget(args.entityId, args.name);
+		broadcastGameState(args.gameId);
 	});
 });
 

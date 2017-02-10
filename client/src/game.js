@@ -8,7 +8,7 @@ export class Game {
 	constructor(api, ea) {
 		this.api = api;
 		this.ea = ea;
-		this.isSetup = true;
+		this.gameState = null;
 		this.villains = [];
 		this.environments = [];
 		this.heroes = [];
@@ -20,9 +20,13 @@ export class Game {
 		this.api.joinGame(this.gameId);
 	}
 
+	get isRunning() {
+		return 'running' === this.gameState;
+	}
+
 	_onStateSync(state) {
 		console.log('state:', state);
-		this.isSetup = state.isSetup;
+		this.gameState = state.gameState;
 		this.villains.splice(0, this.villains.length);
 		this.environments.splice(0, this.environments.length);
 		this.heroes.splice(0, this.heroes.length);
