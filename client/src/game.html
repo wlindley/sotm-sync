@@ -1,7 +1,54 @@
 <template>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12"><h2>Secret code: ${gameId}</h2></div>
+			<div class="col-xs-12">
+				<div class="alert alert-info">
+					Secret code: <strong>${gameId}</strong>
+				</div>
+			</div>
+		</div>
+		<div class="row" if.bind="isSetup">
+			<div class="col-xs-12">
+				<div class="row"><div class="col-xs-12">
+					<h2>Game Setup</h2>
+				</div></div>
+				<div class="row"><div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">Villains</h2>
+						</div>
+						<div class="panel-body">
+							<div class="row" repeat.for="villain of villains">
+								<villain data.bind="villain"></villain>
+							</div>
+						</div>
+					</div>
+				</div></div>
+				<div class="row"><div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">Environments</h2>
+						</div>
+						<div class="panel-body">
+							<div class="row" repeat.for="environment of environments">
+								<environment data.bind="environment"></environment>
+							</div>
+						</div>
+					</div>
+				</div></div>
+				<div class="row"><div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">Heroes</h2>
+						</div>
+						<ul class="list-group target-group">
+							<li class="list-group-item" repeat.for="hero of heroes">
+								<hero data.bind="hero"></hero>
+							</li>
+						</ul>
+					</div>
+				</div></div>
+			</div>
 		</div>
 	</div>
 </template>

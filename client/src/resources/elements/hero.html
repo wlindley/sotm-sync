@@ -1,0 +1,11 @@
+<template>
+	<strong>${name}</strong> - ${currentHp} / ${initialHp}
+	<div class="btn-group">
+		<button type="button" class="btn btn-default btn-md" click.delegate="decrementHp()">
+			<span class="glyphicon glyphicon-minus"></span>
+		</button>
+		<button type="button" class="btn btn-default btn-md" click.delegate="incrementHp()">
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+	</div>
+</template>
