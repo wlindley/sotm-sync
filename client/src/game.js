@@ -24,6 +24,12 @@ export class Game {
 		return 'running' === this.gameState;
 	}
 
+	copyGameIdToClipboard() {
+		let gameIdElement = document.querySelector('#gameId');
+		gameIdElement.select();
+		document.execCommand('copy'); 
+	}
+
 	_onStateSync(state) {
 		console.log('state:', state);
 		this.gameState = state.gameState;
