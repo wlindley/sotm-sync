@@ -2,6 +2,7 @@ const Game = require('./game');
 const path = require('path');
 const express = require('express');
 const data = require('./data');
+const uuid = require('uuid/v4');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname, '../../client')));
 
 app.post('/create-game', (req, res) => {
 	res.json({
-		gameId: '1234'
+		gameId: uuid()
 	});
 });
 
