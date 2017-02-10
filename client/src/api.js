@@ -41,16 +41,10 @@ export class Api {
 
 	createGame() {
 		return new Promise((resolve, reject) => {
-			this.client.fetch('create-game', {method: 'POST'}).then(response => {
-				if (response.ok) {
-					return response.json().then(data => {
-						resolve(data.gameId);
-					});
-				} else {
-					reject(new Error(response.status));
-				}
+			this._fetch('create-game', 'POST').then(data => {
+				resolve(data.gameId);
 			}).catch(error => {
-				reject(new Error(error));
+				reject(error);
 			});
 		});
 	}
@@ -61,5 +55,21 @@ export class Api {
 
 	createTarget(entityId, subTargetName) {
 		socket.emit('create-target', {gameId: this.gameId, entityId: entityId, name: subTargetName});
+	}
+
+	_fetch(path, method='GET') {
+		return new Promise((resolve, reject) => {
+			this.client.fetch(path, {method: method}).then(response => {
+				if (response.ok) {
+					return response.json().then(data => {
+						resolve(data);
+					});
+				} else {
+					reject(new Error(response.status));
+				}
+			}).catch(error => {
+				reject(new Error(error));
+			});
+		});
 	}
 }
