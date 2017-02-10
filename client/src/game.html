@@ -23,11 +23,11 @@
 						<div class="panel-heading">
 							<h2 class="panel-title">Villains</h2>
 						</div>
-						<div class="panel-body">
-							<div class="row" repeat.for="villain of villains">
-								<villain data.bind="villain"></villain>
-							</div>
-						</div>
+						<ul class="list-group target-group">
+							<li class="list-group-item" repeat.for="villain of villains">
+								<entity data.bind="villain"></entity>
+							</li>
+						</ul>
 					</div>
 				</div></div>
 				<div class="row"><div class="col-xs-12">
@@ -35,11 +35,11 @@
 						<div class="panel-heading">
 							<h2 class="panel-title">Environments</h2>
 						</div>
-						<div class="panel-body">
-							<div class="row" repeat.for="environment of environments">
-								<environment data.bind="environment"></environment>
-							</div>
-						</div>
+						<ul class="list-group target-group">
+							<li class="list-group-item" repeat.for="environment of environments">
+								<entity data.bind="environment"></entity>
+							</li>
+						</ul>
 					</div>
 				</div></div>
 				<div class="row"><div class="col-xs-12">
@@ -49,7 +49,7 @@
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="hero of heroes">
-								<hero data.bind="hero"></hero>
+								<entity data.bind="hero"></entity>
 							</li>
 						</ul>
 					</div>

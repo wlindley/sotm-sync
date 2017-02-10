@@ -1,7 +1,7 @@
 import {bindable, decorators} from 'aurelia-framework';
 import {Api} from '../../api';
 
-export let Hero = decorators(
+export let Entity = decorators(
 	bindable({name: 'data', defaultValue: {}})
 ).on(class {
 	static inject() { return [Api]; }
@@ -24,6 +24,10 @@ export let Hero = decorators(
 
 	get initialHp() {
 		return this.data.initialHp;
+	}
+
+	get showHp() {
+		return this.data.currentHp && this.data.initialHp;
 	}
 
 	get targets() {
