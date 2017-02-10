@@ -58,6 +58,24 @@ class Game {
 				this.addFromTemplate(targetTemplate);
 		}
 	}
+
+	createVillain(name) {
+		let template = data.villains.find(v => name === v.name);
+		if (template)
+			this.addFromTemplate(template);
+	}
+
+	createEnvrionment(name) {
+		let template = data.environments.find(v => name === v.name);
+		if (template)
+			this.addFromTemplate(template);
+	}
+
+	createHero(name) {
+		let template = data.heroes.find(v => name === v.name);
+		if (template)
+			this.addFromTemplate(template);
+	}
 }
 
 module.exports = Game;

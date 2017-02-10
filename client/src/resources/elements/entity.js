@@ -1,13 +1,16 @@
 import {bindable, decorators} from 'aurelia-framework';
 import {Api} from '../../api';
 
-export let Hero = decorators(
+export let Entity = decorators(
 	bindable({name: 'data', defaultValue: {}})
 ).on(class {
 	static inject() { return [Api]; }
 
 	constructor(api) {
 		this.api = api;
+		this.createTargetDelegates = {
+			select: (name) => this.createTarget(name)
+		};
 	}
 
 	get id() {
@@ -26,8 +29,12 @@ export let Hero = decorators(
 		return this.data.initialHp;
 	}
 
+	get showHp() {
+		return this.data.currentHp && this.data.initialHp;
+	}
+
 	get targets() {
-		return this.data.targets;
+		return this.data.targets.map(t => t.name);
 	}
 
 	get showTargetCreationDropdown() {

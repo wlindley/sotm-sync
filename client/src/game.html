@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="alert alert-info">
-					Secret code:
+					<strong>Secret code:</strong>
 					<div class="input-group">
 						<input class="form-control" type="text" id="gameId" value="${gameId}" readonly>
 						<span class="input-group-btn">
@@ -13,43 +13,45 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" if.bind="isRunning">
+		<div class="row">
 			<div class="col-xs-12">
-				<div class="row"><div class="col-xs-12">
-					<h2>Game Setup</h2>
-				</div></div>
 				<div class="row"><div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Villains</h2>
+							<dropdown-button label="Add" options.bind="villainOptions" delegates.bind="villainDelegates"></dropdown-button>
 						</div>
-						<div class="panel-body">
-							<div class="row" repeat.for="villain of villains">
-								<villain data.bind="villain"></villain>
-							</div>
-						</div>
+						<ul class="list-group target-group">
+							<li class="list-group-item" repeat.for="villain of villains">
+								<entity data.bind="villain"></entity>
+							</li>
+						</ul>
 					</div>
 				</div></div>
+
 				<div class="row"><div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Environments</h2>
+							<dropdown-button label="Add" options.bind="environmentOptions" delegates.bind="environmentDelegates"></dropdown-button>
 						</div>
-						<div class="panel-body">
-							<div class="row" repeat.for="environment of environments">
-								<environment data.bind="environment"></environment>
-							</div>
-						</div>
+						<ul class="list-group target-group">
+							<li class="list-group-item" repeat.for="environment of environments">
+								<entity data.bind="environment"></entity>
+							</li>
+						</ul>
 					</div>
 				</div></div>
+
 				<div class="row"><div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Heroes</h2>
+							<dropdown-button label="Add" options.bind="heroOptions" delegates.bind="heroDelegates"></dropdown-button>
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="hero of heroes">
-								<hero data.bind="hero"></hero>
+								<entity data.bind="hero"></entity>
 							</li>
 						</ul>
 					</div>

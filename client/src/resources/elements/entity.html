@@ -1,0 +1,12 @@
+<template>
+	<strong>${name}</strong><span if.bind="showHp"> - ${currentHp} / ${initialHp}</span>
+	<div class="btn-group" if.bind="showHp">
+		<button type="button" class="btn btn-default btn-md" click.delegate="decrementHp()">
+			<span class="glyphicon glyphicon-minus"></span>
+		</button>
+		<button type="button" class="btn btn-default btn-md" click.delegate="incrementHp()">
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+	</div>
+	<dropdown-button label="Create Target" options.bind="targets" delegates.bind="createTargetDelegates" if.bind="showTargetCreationDropdown"></dropdown-button>
+</template>
