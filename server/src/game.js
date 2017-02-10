@@ -4,14 +4,14 @@ class Game {
 	constructor(gameId) {
 		this.nextEntityId = 0;
 		this.gameId = gameId;
-		this.isSetup = true;
+		this.gameState = 'running';
 		this.objects = [];
 		this.createInitialObjects();
 	}
 
 	serializeState() {
 		return {
-			isSetup: this.isSetup,
+			gameState: this.gameState,
 			objects: this.objects
 		};
 	}

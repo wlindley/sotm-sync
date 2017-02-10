@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
 
 	socket.on('modify-hp', (args) => {
 		games.get(args.gameId).modifyHp(args.entityId, args.delta);
-		socket.emit('game-state', {state: games.get(args.gameId).serializeState()});
+		io.to(args.gameId).emit('game-state', {state: games.get(args.gameId).serializeState()});
 	});
 });
 
