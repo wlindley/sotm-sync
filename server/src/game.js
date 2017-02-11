@@ -6,7 +6,6 @@ class Game {
 		this.gameId = gameId;
 		this.gameState = 'running';
 		this.objects = [];
-		this.createInitialObjects();
 	}
 
 	serializeState() {
@@ -14,23 +13,6 @@ class Game {
 			gameState: this.gameState,
 			objects: this.objects
 		};
-	}
-
-	createInitialObjects() {
-		this.addRandom(data.villains);
-		this.addRandom(data.environments);
-		this.addRandom(data.heroes, 3);
-	}
-
-	addRandom(src, count=1) {
-		let additions = [];
-		while (count > additions.length) {
-			let addition = src[Math.floor(Math.random() * src.length)];
-			if (!additions.includes(addition))
-				additions.push(addition);
-		}
-		for (let item of additions)
-			this.addFromTemplate(item);
 	}
 
 	addFromTemplate(template) {
@@ -65,7 +47,7 @@ class Game {
 			this.addFromTemplate(template);
 	}
 
-	createEnvrionment(name) {
+	createEnvironment(name) {
 		let template = data.environments.find(v => name === v.name);
 		if (template)
 			this.addFromTemplate(template);
