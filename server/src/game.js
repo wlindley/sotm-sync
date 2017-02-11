@@ -1,7 +1,9 @@
 const data = require('./data');
+const EventEmitter = require('events').EventEmitter;
 
-class Game {
+class Game extends EventEmitter {
 	constructor(gameId) {
+		super();
 		this.nextEntityId = 0;
 		this.gameId = gameId;
 		this.gameState = 'running';
@@ -22,6 +24,7 @@ class Game {
 		if (addition.hasOwnProperty('initialHp'))
 			addition.currentHp = addition.initialHp;
 		this.objects.push(addition);
+		this._dispatchChanged();
 	}
 
 	modifyHp(entityId, hpDelta) {
@@ -29,6 +32,7 @@ class Game {
 		if (entity && Number.isInteger(entity.currentHp)) {
 			let newHp = entity.currentHp + hpDelta;
 			entity.currentHp = Math.max(0, Math.min(entity.initialHp, newHp));
+			this._dispatchChanged();
 		}
 	}
 
@@ -61,8 +65,14 @@ class Game {
 
 	removeEntity(entityId) {
 		let index = this.objects.findIndex(obj => entityId === obj.id);
-		if (0 <= index)
+		if (0 <= index) {
 			this.objects.splice(index, 1);
+			this._dispatchChanged();
+		}
+	}
+
+	_dispatchChanged() {
+		this.emit('changed');
 	}
 }
 

@@ -41,7 +41,9 @@ io.on('connection', (socket) => {
 			socket.leave(roomId);
 		}
 		socket.join(args.gameId);
-		socket.emit('game-state', {state: games.get(args.gameId).serializeState()});
+		let game = games.get(args.gameId);
+		socket.emit('game-state', {state: game.serializeState()});
+		game.on('changed', () => broadcastGameState(args.gameId));
 	});
 
 	socket.on('modify-hp', (args) => {
