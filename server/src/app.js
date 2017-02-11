@@ -68,6 +68,11 @@ io.on('connection', (socket) => {
 		games.get(args.gameId).createHero(args.name);
 		broadcastGameState(args.gameId);
 	});
+
+	socket.on('remove-entity', (args) => {
+		games.get(args.gameId).removeEntity(args.entityId);
+		broadcastGameState(args.gameId);
+	});
 });
 
 server.listen(80);

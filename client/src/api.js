@@ -81,6 +81,10 @@ export class Api {
 		socket.emit('create-hero', {gameId: this.gameId, name: name});
 	}
 
+	removeEntity(entityId) {
+		socket.emit('remove-entity', {gameId: this.gameId, entityId: entityId});
+	}
+
 	_fetch(path, method='GET') {
 		return new Promise((resolve, reject) => {
 			this.client.fetch(path, {method: method}).then(response => {

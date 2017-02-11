@@ -52,4 +52,8 @@ export let Entity = decorators(
 	createTarget(subTargetName) {
 		this.api.createTarget(this.id, subTargetName);
 	}
+
+	remove() {
+		this.api.removeEntity(this.id);
+	}
 });

@@ -58,6 +58,12 @@ class Game {
 		if (template)
 			this.addFromTemplate(template);
 	}
+
+	removeEntity(entityId) {
+		let index = this.objects.findIndex(obj => entityId === obj.id);
+		if (0 <= index)
+			this.objects.splice(index, 1);
+	}
 }
 
 module.exports = Game;
