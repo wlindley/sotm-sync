@@ -30,7 +30,7 @@ export let Entity = decorators(
 	}
 
 	get showHp() {
-		return this.data.currentHp && this.data.initialHp;
+		return Number.isInteger(this.data.currentHp) && Number.isInteger(this.data.initialHp);
 	}
 
 	get targets() {
