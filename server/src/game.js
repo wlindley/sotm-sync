@@ -33,6 +33,12 @@ class Game extends EventEmitter {
 			let newHp = entity.currentHp + hpDelta;
 			entity.currentHp = Math.max(0, Math.min(entity.initialHp, newHp));
 			this._dispatchChanged();
+			if (0 === entity.currentHp) {
+				setTimeout(() => {
+					if (0 === entity.currentHp)
+						this.removeEntity(entity.id);
+				}, 1000);
+			}
 		}
 	}
 
