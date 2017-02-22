@@ -3,10 +3,10 @@ node_js:
   - "node"
   - "6"
 install:
-  - pushd server && npm install && popd
-  - pushd client && npm install && popd
+  - pushd server && npm install
+  - pushd client && npm install
   - npm install -g aurelia-cli
 script:
-  - npm run lint
-  - npm test
-  
+  - pushd server && npm run all
+  - pushd client && au test
+  - pushd client && au build
