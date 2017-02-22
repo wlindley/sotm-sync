@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "start": "node src/app",
-    "test": "istanbul cover --include-all-sources jasmine-node test",
+    "test": "jasmine",
     "lint": "eslint .",
     "all": "npm run lint && npm test"
   },
@@ -17,14 +17,13 @@
   },
   "devDependencies": {
     "eslint": "^3.13.1",
-    "istanbul": "^0.4.5",
-    "jasmine-node": "^1.14.5"
+    "jasmine": "^2.5.3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/wlindley/sotm-sync.git"
   },
-  "eslineConfig": {
+  "eslintConfig": {
     "extends": "eslint:recommended",
     "rules": {
       "indent": [
@@ -51,7 +50,7 @@
     },
     "env": {
       "node": true,
-      "jamine": true,
+      "jasmine": true,
       "es6": true
     },
     "ecmaFeatures": {

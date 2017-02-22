@@ -1,12 +1,13 @@
 const data = require('./data');
+const EventEmitter = require('events').EventEmitter;
 
-class Game {
+class Game extends EventEmitter {
 	constructor(gameId) {
+		super();
 		this.nextEntityId = 0;
 		this.gameId = gameId;
 		this.gameState = 'running';
 		this.objects = [];
-		this.createInitialObjects();
 	}
 
 	serializeState() {
@@ -16,23 +17,6 @@ class Game {
 		};
 	}
 
-	createInitialObjects() {
-		this.addRandom(data.villains);
-		this.addRandom(data.environments);
-		this.addRandom(data.heroes, 3);
-	}
-
-	addRandom(src, count=1) {
-		let additions = [];
-		while (count > additions.length) {
-			let addition = src[Math.floor(Math.random() * src.length)];
-			if (!additions.includes(addition))
-				additions.push(addition);
-		}
-		for (let item of additions)
-			this.addFromTemplate(item);
-	}
-
 	addFromTemplate(template) {
 		let addition = Object.assign({}, template);
 		addition.id = this.nextEntityId;
@@ -40,6 +24,7 @@ class Game {
 		if (addition.hasOwnProperty('initialHp'))
 			addition.currentHp = addition.initialHp;
 		this.objects.push(addition);
+		this._dispatchChanged();
 	}
 
 	modifyHp(entityId, hpDelta) {
@@ -47,6 +32,13 @@ class Game {
 		if (entity && Number.isInteger(entity.currentHp)) {
 			let newHp = entity.currentHp + hpDelta;
 			entity.currentHp = Math.max(0, Math.min(entity.initialHp, newHp));
+			this._dispatchChanged();
+			if (0 === entity.currentHp) {
+				setTimeout(() => {
+					if (0 === entity.currentHp)
+						this.removeEntity(entity.id);
+				}, 1000);
+			}
 		}
 	}
 
@@ -65,7 +57,7 @@ class Game {
 			this.addFromTemplate(template);
 	}
 
-	createEnvrionment(name) {
+	createEnvironment(name) {
 		let template = data.environments.find(v => name === v.name);
 		if (template)
 			this.addFromTemplate(template);
@@ -75,6 +67,18 @@ class Game {
 		let template = data.heroes.find(v => name === v.name);
 		if (template)
 			this.addFromTemplate(template);
+	}
+
+	removeEntity(entityId) {
+		let index = this.objects.findIndex(obj => entityId === obj.id);
+		if (0 <= index) {
+			this.objects.splice(index, 1);
+			this._dispatchChanged();
+		}
+	}
+
+	_dispatchChanged() {
+		this.emit('changed');
 	}
 }
 

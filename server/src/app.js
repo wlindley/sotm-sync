@@ -41,32 +41,33 @@ io.on('connection', (socket) => {
 			socket.leave(roomId);
 		}
 		socket.join(args.gameId);
-		socket.emit('game-state', {state: games.get(args.gameId).serializeState()});
+		let game = games.get(args.gameId);
+		socket.emit('game-state', {state: game.serializeState()});
+		game.on('changed', () => broadcastGameState(args.gameId));
 	});
 
 	socket.on('modify-hp', (args) => {
 		games.get(args.gameId).modifyHp(args.entityId, args.delta);
-		broadcastGameState(args.gameId);
 	});
 
 	socket.on('create-target', (args) => {
 		games.get(args.gameId).createTarget(args.entityId, args.name);
-		broadcastGameState(args.gameId);
 	});
 
 	socket.on('create-villain', (args) => {
 		games.get(args.gameId).createVillain(args.name);
-		broadcastGameState(args.gameId);
 	});
 
 	socket.on('create-environment', (args) => {
 		games.get(args.gameId).createEnvironment(args.name);
-		broadcastGameState(args.gameId);
 	});
 
 	socket.on('create-hero', (args) => {
 		games.get(args.gameId).createHero(args.name);
-		broadcastGameState(args.gameId);
+	});
+
+	socket.on('remove-entity', (args) => {
+		games.get(args.gameId).removeEntity(args.entityId);
 	});
 });
 
