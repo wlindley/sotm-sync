@@ -4,9 +4,14 @@ node_js:
   - "6"
 install:
   - pushd server && npm install
+  - popd
   - pushd client && npm install
+  - popd
   - npm install -g aurelia-cli
 script:
   - pushd server && npm run all
+  - popd
   - pushd client && au test
+  - popd
   - pushd client && au build
+  - popd
