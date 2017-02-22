@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+	- "node"
+	- "6"
+install:
+	- pushd server && npm install && popd
+	- pushd client && npm install && popd
+	- npm install -g aurelia-cli
+script:
+	- npm run lint
+	- npm test
