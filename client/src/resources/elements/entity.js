@@ -34,11 +34,11 @@ export let Entity = decorators(
 	}
 
 	get targets() {
-		return this.data.targets.map(t => t.name);
+		return this.data.childTargets.map(t => t);
 	}
 
 	get showTargetCreationDropdown() {
-		return this.data.targets && 0 < this.data.targets.length;
+		return this.data.childTargets && 0 < this.data.childTargets.length;
 	}
 
 	incrementHp() {

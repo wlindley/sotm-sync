@@ -9,24 +9,16 @@ export class Game {
 		this.api = api;
 		this.ea = ea;
 		this.villains = [];
-		this.environments = [];
-		this.heroes = [];
 		this.villainOptions = [];
+		this.environments = [];
 		this.environmentOptions = [];
+		this.heroes = [];
 		this.heroOptions = [];
-		this.villainDelegates = {
-			select: (name) => this._addVillain(name)
-		};
-		this.environmentDelegates = {
-			select: (name) => this._addEnvironment(name)
-		};
-		this.heroDelegates = {
-			select: (name) => this._addHero(name)
+		this.characterDelegates = {
+			select: (name) => this._addCharacter(name)
 		};
 		this.ea.subscribe(messages.StateSync, msg => this._onStateSync(msg.state));
-		this.api.retrieveVillains().then(villains => this._setVillainOptions(villains));
-		this.api.retrieveEnvironments().then(environments => this._setEnvironmentOptions(environments));
-		this.api.retrieveHeroes().then(heroes => this._setHeroOptions(heroes));
+		this.api.retrieveData().then(data => this._setData(data));
 	}
 
 	activate(params, routeConfig) {
@@ -55,33 +47,19 @@ export class Game {
 		}
 	}
 
-	_setVillainOptions(villains) {
-		this.villainOptions.splice(0, this.villainOptions.length);
-		for (let villain of villains)
-			this.villainOptions.push(villain.name);
+	_setData(data) {
+		this._replaceOptions(this.villainOptions, data, 'villain');
+		this._replaceOptions(this.environmentOptions, data, 'environment');
+		this._replaceOptions(this.heroOptions, data, 'hero');
 	}
 
-	_setEnvironmentOptions(environments) {
-		this.environmentOptions.splice(0, this.environmentOptions.length);
-		for (let environment of environments)
-			this.environmentOptions.push(environment.name);
+	_replaceOptions(options, data, type) {
+		options.splice(0, options.length);
+		for (let option of data.filter(o => type === o.type && 'character' === o.subtype && o.inList))
+			options.push(option.name);
 	}
 
-	_setHeroOptions(heroes) {
-		this.heroOptions.splice(0, this.heroOptions.length);
-		for (let hero of heroes)
-			this.heroOptions.push(hero.name);
-	}
-
-	_addVillain(name) {
-		this.api.createVillain(name);
-	}
-
-	_addEnvironment(name) {
-		this.api.createEnvironment(name);
-	}
-
-	_addHero(name) {
-		this.api.createHero(name);
+	_addCharacter(name) {
+		this.api.createCharacter(name);
 	}
 }
