@@ -20,16 +20,8 @@ app.post('/create-game', (req, res) => {
 	});
 });
 
-app.get('/villains', (req, res) => {
-	res.json(data.villains);
-});
-
-app.get('/environments', (req, res) => {
-	res.json(data.environments);
-});
-
-app.get('/heroes', (req, res) => {
-	res.json(data.heroes);
+app.get('/data', (req, res) => {
+	res.json(data);
 });
 
 io.on('connection', (socket) => {
@@ -54,16 +46,8 @@ io.on('connection', (socket) => {
 		games.get(args.gameId).createTarget(args.entityId, args.name);
 	});
 
-	socket.on('create-villain', (args) => {
-		games.get(args.gameId).createVillain(args.name);
-	});
-
-	socket.on('create-environment', (args) => {
-		games.get(args.gameId).createEnvironment(args.name);
-	});
-
-	socket.on('create-hero', (args) => {
-		games.get(args.gameId).createHero(args.name);
+	socket.on('create-character', (args) => {
+		games.get(args.gameId).createCharacter(args.name);
 	});
 
 	socket.on('remove-entity', (args) => {
