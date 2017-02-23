@@ -11,6 +11,8 @@ export let Entity = decorators(
 		this.createTargetDelegates = {
 			select: (name) => this.createTarget(name)
 		};
+		this.templates = [];
+		this.api.retrieveData().then((templates) => this.templates = templates);
 	}
 
 	get id() {
@@ -34,7 +36,16 @@ export let Entity = decorators(
 	}
 
 	get targets() {
-		return this.data.childTargets.map(t => t);
+		return this.data.childTargets.map(childName => {
+			let template = this.templates.find(t => childName === t.name);
+			let displayName = childName;
+			if (template)
+				displayName = template.displayName;
+			return {
+				id: childName,
+				name: displayName
+			};
+		});
 	}
 
 	get showTargetCreationDropdown() {

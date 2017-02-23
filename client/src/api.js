@@ -26,6 +26,7 @@ export class Api {
 			});
 		});
 		this.gameId = null;
+		this.dataPromise = null;
 	}
 
 	init() {
@@ -35,7 +36,9 @@ export class Api {
 	}
 
 	retrieveData() {
-		return this._fetch('data');
+		if (!this.dataPromise)
+			this.dataPromise = this._fetch('data');
+		return this.dataPromise;
 	}
 
 	joinGame(gameId) {
