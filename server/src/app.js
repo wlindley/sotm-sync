@@ -29,7 +29,9 @@ app.get('/data', (req, res) => {
 io.on('connection', (socket) => {
 	socket.on('join-game', (args) => {
 		if (!games.has(args.gameId)) {
-			games.set(args.gameId, new Game(args.gameId, data, timer));
+			let game = new Game(args.gameId, data, timer);
+			games.set(args.gameId, game);
+			game.on('changed', () => broadcastGameState(args.gameId));
 		}
 		for (let roomId in socket.rooms) {
 			socket.leave(roomId);
@@ -37,7 +39,6 @@ io.on('connection', (socket) => {
 		socket.join(args.gameId);
 		let game = games.get(args.gameId);
 		socket.emit('game-state', {state: game.serializeState()});
-		game.on('changed', () => broadcastGameState(args.gameId));
 	});
 
 	socket.on('modify-hp', (args) => {
