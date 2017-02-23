@@ -2,11 +2,13 @@ const Game = require('./game');
 const path = require('path');
 const express = require('express');
 const data = require('./data');
+const Timer = require('./timer').Timer;
 const uuid = require('uuid/v4');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const games = new Map();
+const timer = new Timer();
 
 let broadcastGameState = (gameId) => {
 	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});
@@ -20,22 +22,16 @@ app.post('/create-game', (req, res) => {
 	});
 });
 
-app.get('/villains', (req, res) => {
-	res.json(data.villains);
-});
-
-app.get('/environments', (req, res) => {
-	res.json(data.environments);
-});
-
-app.get('/heroes', (req, res) => {
-	res.json(data.heroes);
+app.get('/data', (req, res) => {
+	res.json(data);
 });
 
 io.on('connection', (socket) => {
 	socket.on('join-game', (args) => {
 		if (!games.has(args.gameId)) {
-			games.set(args.gameId, new Game(args.gameId));
+			let game = new Game(args.gameId, data, timer);
+			games.set(args.gameId, game);
+			game.on('changed', () => broadcastGameState(args.gameId));
 		}
 		for (let roomId in socket.rooms) {
 			socket.leave(roomId);
@@ -43,7 +39,6 @@ io.on('connection', (socket) => {
 		socket.join(args.gameId);
 		let game = games.get(args.gameId);
 		socket.emit('game-state', {state: game.serializeState()});
-		game.on('changed', () => broadcastGameState(args.gameId));
 	});
 
 	socket.on('modify-hp', (args) => {
@@ -54,16 +49,8 @@ io.on('connection', (socket) => {
 		games.get(args.gameId).createTarget(args.entityId, args.name);
 	});
 
-	socket.on('create-villain', (args) => {
-		games.get(args.gameId).createVillain(args.name);
-	});
-
-	socket.on('create-environment', (args) => {
-		games.get(args.gameId).createEnvironment(args.name);
-	});
-
-	socket.on('create-hero', (args) => {
-		games.get(args.gameId).createHero(args.name);
+	socket.on('create-character', (args) => {
+		games.get(args.gameId).createCharacter(args.name);
 	});
 
 	socket.on('remove-entity', (args) => {

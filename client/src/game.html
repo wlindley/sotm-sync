@@ -19,7 +19,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Villains</h2>
-							<dropdown-button label="Add" options.bind="villainOptions" delegates.bind="villainDelegates"></dropdown-button>
+							<dropdown-button label="Add" options.bind="villainOptions" delegates.bind="characterDelegates"></dropdown-button>
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="villain of villains">
@@ -33,7 +33,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Environments</h2>
-							<dropdown-button label="Add" options.bind="environmentOptions" delegates.bind="environmentDelegates"></dropdown-button>
+							<dropdown-button label="Add" options.bind="environmentOptions" delegates.bind="characterDelegates"></dropdown-button>
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="environment of environments">
@@ -47,7 +47,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Heroes</h2>
-							<dropdown-button label="Add" options.bind="heroOptions" delegates.bind="heroDelegates"></dropdown-button>
+							<dropdown-button label="Add" options.bind="heroOptions" delegates.bind="characterDelegates"></dropdown-button>
 						</div>
 						<ul class="list-group target-group">
 							<li class="list-group-item" repeat.for="hero of heroes">

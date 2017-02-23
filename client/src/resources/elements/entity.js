@@ -11,6 +11,8 @@ export let Entity = decorators(
 		this.createTargetDelegates = {
 			select: (name) => this.createTarget(name)
 		};
+		this.templates = [];
+		this.api.retrieveData().then((templates) => this.templates = templates);
 	}
 
 	get id() {
@@ -18,7 +20,7 @@ export let Entity = decorators(
 	}
 
 	get name() {
-		return this.data.name;
+		return this.data.displayName;
 	}
 
 	get currentHp() {
@@ -34,11 +36,20 @@ export let Entity = decorators(
 	}
 
 	get targets() {
-		return this.data.targets.map(t => t.name);
+		return this.data.childTargets.map(childName => {
+			let template = this.templates.find(t => childName === t.name);
+			let displayName = childName;
+			if (template)
+				displayName = template.displayName;
+			return {
+				id: childName,
+				name: displayName
+			};
+		});
 	}
 
 	get showTargetCreationDropdown() {
-		return this.data.targets && 0 < this.data.targets.length;
+		return this.data.childTargets && 0 < this.data.childTargets.length;
 	}
 
 	incrementHp() {

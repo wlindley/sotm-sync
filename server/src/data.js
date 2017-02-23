@@ -1,51 +1,7 @@
-module.exports = {
-	villains: [
-		{
-			type: "villain",
-			name: "Baron Blade",
-			initialHp: 50,
-			targets: []
-		}
-	],
-	environments: [
-		{
-			type: "environment",
-			name: "Megalopolis",
-			targets: []
-		}
-	],
-	heroes: [
-		{
-			type: "hero",
-			name: "Legacy",
-			initialHp: 31
-		},
-		{
-			type: "hero",
-			name: "Tachyon",
-			initialHp: 25
-		},
-		{
-			type: "hero",
-			name: "Haka",
-			initialHp: 31
-		},
-		{
-			type: "hero",
-			name: "Unity",
-			initialHp: 24,
-			targets: [
-				{
-					type: "hero",
-					name: "Raptorbot",
-					initialHp: 5
-				},
-				{
-					type: "hero",
-					name: "Platformbot",
-					initialHp: 3
-				}
-			]
-		}
-	]
-};
+const villains = require('./data/villains');
+const environments = require('./data/environments');
+const heroes = require('./data/heroes');
+
+let entities = villains.concat(environments).concat(heroes);
+
+module.exports = entities;
