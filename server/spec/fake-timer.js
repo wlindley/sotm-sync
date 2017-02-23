@@ -8,8 +8,8 @@ class TimerFake {
 	}
 
 	dispatchCallbacks() {
-		for (let callback of this._waitingCallbacks)
-			callback();
+		for (let waitingCallback of this._waitingCallbacks)
+			waitingCallback();
 	}
 }
 module.exports.Timer = TimerFake;

@@ -1,4 +1,3 @@
-const data = require('./data');
 const EventEmitter = require('events').EventEmitter;
 const seconds = require('./timer').seconds;
 

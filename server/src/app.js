@@ -2,11 +2,13 @@ const Game = require('./game');
 const path = require('path');
 const express = require('express');
 const data = require('./data');
+const Timer = require('./timer').Timer;
 const uuid = require('uuid/v4');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const games = new Map();
+const timer = new Timer();
 
 let broadcastGameState = (gameId) => {
 	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});
@@ -27,7 +29,7 @@ app.get('/data', (req, res) => {
 io.on('connection', (socket) => {
 	socket.on('join-game', (args) => {
 		if (!games.has(args.gameId)) {
-			games.set(args.gameId, new Game(args.gameId));
+			games.set(args.gameId, new Game(args.gameId, data, timer));
 		}
 		for (let roomId in socket.rooms) {
 			socket.leave(roomId);
