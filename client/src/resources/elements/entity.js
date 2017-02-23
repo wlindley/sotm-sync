@@ -18,7 +18,7 @@ export let Entity = decorators(
 	}
 
 	get name() {
-		return this.data.name;
+		return this.data.displayName;
 	}
 
 	get currentHp() {

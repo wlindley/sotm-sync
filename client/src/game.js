@@ -56,7 +56,7 @@ export class Game {
 	_replaceOptions(options, data, type) {
 		options.splice(0, options.length);
 		for (let option of data.filter(o => type === o.type && 'character' === o.subtype && o.inList))
-			options.push(option.name);
+			options.push({id: option.name, name: option.displayName});
 	}
 
 	_addCharacter(name) {
