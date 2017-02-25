@@ -1,14 +1,13 @@
-import io from 'socket.io-client';
 import {HttpClient} from 'aurelia-fetch-client';
 import * as messages from './messages';
 import {EventAggregator} from 'aurelia-event-aggregator';
-let socket = io.connect('http://localhost:80');
 
 export class Api {
 	static inject() { return [EventAggregator]; }
 
 	constructor(ea) {
 		this.ea = ea;
+		this.socket = io();
 		this.client = new HttpClient();
 		this.client.configure(config => {
 			config.withInterceptor({
@@ -30,7 +29,7 @@ export class Api {
 	}
 
 	init() {
-		socket.on('game-state', (args) => {
+		this.socket.on('game-state', (args) => {
 			this.ea.publish(new messages.StateSync(args.state));
 		});
 	}
@@ -43,7 +42,7 @@ export class Api {
 
 	joinGame(gameId) {
 		this.gameId = gameId;
-		socket.emit('join-game', {gameId: gameId});
+		this.socket.emit('join-game', {gameId: gameId});
 	}
 
 	createGame() {
@@ -57,19 +56,19 @@ export class Api {
 	}
 
 	modifyHp(entityId, hpDelta) {
-		socket.emit('modify-hp', {gameId: this.gameId, entityId: entityId, delta: hpDelta});
+		this.socket.emit('modify-hp', {gameId: this.gameId, entityId: entityId, delta: hpDelta});
 	}
 
 	createTarget(entityId, subTargetName) {
-		socket.emit('create-target', {gameId: this.gameId, entityId: entityId, name: subTargetName});
+		this.socket.emit('create-target', {gameId: this.gameId, entityId: entityId, name: subTargetName});
 	}
 
 	createCharacter(name) {
-		socket.emit('create-character', {gameId: this.gameId, name: name});
+		this.socket.emit('create-character', {gameId: this.gameId, name: name});
 	}
 
 	removeEntity(entityId) {
-		socket.emit('remove-entity', {gameId: this.gameId, entityId: entityId});
+		this.socket.emit('remove-entity', {gameId: this.gameId, entityId: entityId});
 	}
 
 	_fetch(path, method='GET') {
