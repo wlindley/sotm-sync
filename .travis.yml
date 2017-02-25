@@ -9,9 +9,12 @@ install:
   - popd
   - npm install -g aurelia-cli
 script:
-  - pushd server && npm run all
+  - pushd server
+  - npm run all
   - popd
-  - pushd client && au test
+  - pushd client
+  - au build
+  - au test
+  - au build --env prod
   - popd
-  - pushd client && au build
-  - popd
+  
