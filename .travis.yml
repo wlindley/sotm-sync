@@ -27,7 +27,9 @@ before_deploy:
   - cp -r client/bootstrap deploy/client/bootstrap
   - rm -rf deploy/node_modules
   - rm -rf deploy/spec
-  - zip -r artifact.zip deploy/*
+  - pushd deploy
+  - zip -r ../artifact.zip *
+  - popd
   
 deploy:
   - provider: elasticbeanstalk
