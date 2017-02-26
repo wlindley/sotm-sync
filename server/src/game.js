@@ -30,8 +30,7 @@ class Game extends EventEmitter {
 	modifyHp(entityId, hpDelta) {
 		let entity = this._getEntityById(entityId);
 		if (entity && Number.isInteger(entity.currentHp)) {
-			let newHp = entity.currentHp + hpDelta;
-			entity.currentHp = Math.max(0, Math.min(entity.initialHp, newHp));
+			this._applyHpDelta(entity, hpDelta);
 			this._dispatchChanged();
 			if (0 === entity.currentHp) {
 				this._timer.wait(seconds(1), () => {
@@ -50,6 +49,10 @@ class Game extends EventEmitter {
 		}
 	}
 
+	_getEntityById(entityId) {
+		return this._objects.find(obj => entityId === obj.id);
+	}
+
 	_addFromTemplate(templateName, parentId=null) {
 		let instances = this._templateInstantiator.instantiate(templateName);
 		for (let instance of instances) {
@@ -58,13 +61,8 @@ class Game extends EventEmitter {
 			this._objects.push(instance);
 		}
 		/*
-		let addition = Object.assign({}, template);
-		addition.id = this._nextEntityId;
-		this._nextEntityId++;
 		if (addition.hasOwnProperty('initialHp'))
 			addition.currentHp = addition.initialHp;
-		if (Number.isInteger(parentId))
-			addition.parentId = parentId;
 		*/
 		this._dispatchChanged();
 	}
@@ -79,8 +77,9 @@ class Game extends EventEmitter {
 			instance.parentId = parentId;
 	}
 
-	_getEntityById(entityId) {
-		return this._objects.find(obj => entityId === obj.id);
+	_applyHpDelta(entity, hpDelta) {
+		let newHp = entity.currentHp + hpDelta;
+		entity.currentHp = Math.max(0, Math.min(entity.initialHp, newHp));
 	}
 
 	_dispatchChanged() {
