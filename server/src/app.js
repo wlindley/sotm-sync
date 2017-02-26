@@ -14,7 +14,7 @@ let broadcastGameState = (gameId) => {
 	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});
 };
 
-app.use(express.static(path.join(__dirname, '../../client')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 app.post('/create-game', (req, res) => {
 	res.json({
