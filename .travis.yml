@@ -18,3 +18,16 @@ script:
   - au build --env prod
   - popd
   
+deploy:
+  - provider: elasticbeanstalk
+    app: sotm-sync
+    env: sotm-sync-main
+    region: us-west-2
+    bucket_name: sotm-sync-artifacts
+    access-key-id:
+      secure: "DenPkTrc7ddUc594nKXSWJxj9ic+fDt9iunu5pIthS7R3UEuoAS1Vuj04jw7Zl9mytx2mhkMCR4dyOyGzq4lOjAo+Os2cOqZNCcQyPlleoQ3FcqDF1XObAQr18mI7WxOuWU3tElTiBtrlw2iKDvnSmmxNSangRXtKbEiHs0nhynKpnctyiXSyKsdlRh0hgenU9/hcUonFFUJdmbkN5rp3xRHuPbLasPdnmjVg7zOdGO1KFZYgxAXkdsQqn7FUZJADbk3ScqwYwsjDtASrEiOrR663sWYtg7mC4aMxbX4BYGV5PAbPWQiYA/lwhYRbwQoj5R/zz0hnSgIu4hCvgf+KOOJVBacd8bbyfk2CFIigVaDgjxtY8QoH7lDPnnrG6woJwAtbYRxwHKrflOFafkTT+DNK1QwSRU0a7WTRd3rkvfN81lN+oypRHxg1QmojW9Hpd5aNnQ4lZqgCsR6oDYYGnNt5sX6L1W5bx0AJYSW8GPjqoCR0MKxc+IYQte+7+pbOy1s5fhwVo53Catato9Now0mIh1TlpOqPKUP8ji7MjqTb0oJ3Fmg53asqu0bfw8/yR1jLDDtZDcdUgZ/ZlFQMfCkFz76OG6Ueux/jwJdzHFpsYZ4LnRVi/NW/PkKIV6f+Hh4mVBhtobxNlGTIAcGxmtM0bPKNCeOWna+Ac6pZsM="
+    secret_access_key:
+      secure: "PvZhvBsmIBGQVe7XBMFpIW2CNN9UkQsSFroQnbd8wd+tzXnstcMbTiyG6g6VswSoeylaan4+lQn7crxEtZIbzxRaPkF4KX0nb5QzmKOjkdW7EfjBBO+W6TRNmUuvJTGPPvnWIT7RvwbZj/7FR3q4RwxxVsHNmRoZav2kKrbnOFgcOqoVOXA477iDlf0Ei2ziz0aIwnTu7N/OYVTg2y48i6W3Xq9Qn34p/bC+SjjolHc+SHW+tKB2sn5ZGeF2I9ZZaVwrRsQgThbdsPIDm0J8oRQkcn1KOlyxBkl4Oha2x3UIeS2FB3MDREMMhcUeMjG5m/N5iXUd2yLeAw7ilUrDgDy5QpMPY94i8mwY/jiXIa8m9WTLUeghWPaCpWNhismtXstW94pQDedDKDxRJZ8zZvnEEL5D+uk8X9A9tnSs16iGd5SdSu70Xmk2cKC//bNw2MNi3uqeiZ/fXcNG4f5/U/RXQ7yH4qboUwUj2E39eJL5uczh1Fd550OHUPZyQz7gm/T10cG7u4FnBt3WK2jWev3sj7oIElWRBsvqH6F12bKzvFCD9LpP4rJrdMKH0X/FvlutSzBLTGQA/usWEJ2uKky3t7LgeXFld2V/MTrmytF7ER2VOu4VOEUCX8+4/6xbVdiDQNmJqDhMTWK39hvb10Ek6CvIB/oZHJ4xzmYJ/0U="
+    on:
+      branch: master
+      node: '6'
