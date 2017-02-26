@@ -1,17 +1,27 @@
 const Game = require('./game');
+const data = require('./data');
+const InstantiatorFactory = require('./instantiator-factory');
+const LifeCycleFactory = require('./lifecycle-factory');
+
 const path = require('path');
 const express = require('express');
-const data = require('./data');
-const Timer = require('./timer').Timer;
 const uuid = require('uuid/v4');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+
+const instantiator = new InstantiatorFactory(data).build();
+const lifecycle = new LifeCycleFactory().build();
 const games = new Map();
-const timer = new Timer();
 
 let broadcastGameState = (gameId) => {
 	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});
+};
+
+let createGame = (gameId) => {
+	let game = new Game(gameId, instantiator, lifecycle);
+	game.on('changed', () => broadcastGameState(gameId));
+	return game;
 };
 
 app.use(express.static(path.join(__dirname, '../client')));
@@ -28,14 +38,10 @@ app.get('/data', (req, res) => {
 
 io.on('connection', (socket) => {
 	socket.on('join-game', (args) => {
-		if (!games.has(args.gameId)) {
-			let game = new Game(args.gameId, data, timer);
-			games.set(args.gameId, game);
-			game.on('changed', () => broadcastGameState(args.gameId));
-		}
-		for (let roomId in socket.rooms) {
+		if (!games.has(args.gameId))
+			games.set(args.gameId, createGame(args.gameId));
+		for (let roomId in socket.rooms)
 			socket.leave(roomId);
-		}
 		socket.join(args.gameId);
 		let game = games.get(args.gameId);
 		socket.emit('game-state', {state: game.serializeState()});
