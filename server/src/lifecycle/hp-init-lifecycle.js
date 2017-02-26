@@ -3,6 +3,10 @@ class HpInitLifecycle {
 		entity.currentHp = entity.initialHp;
 	}
 
+	hpChanged(entity, game) {
+		
+	}
+
 	destroyed(entity, game) {
 
 	}

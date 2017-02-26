@@ -26,6 +26,12 @@ describe('HpInitLifecycle', () => {
 		});
 	});
 
+	describe('hpChanged', () => {
+		it('should exist', () => {
+			expect(this.testObj.hpChanged).toBeDefined();
+		});
+	});
+
 	describe('destroyed', () => {
 		it('should exist', () => {
 			expect(this.testObj.destroyed).toBeDefined();
