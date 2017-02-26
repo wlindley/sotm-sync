@@ -1,7 +1,7 @@
 const Game = require('./game');
 const data = require('./data');
-const Timer = require('./timer').Timer;
 const InstantiatorFactory = require('./instantiator-factory');
+const LifeCycleFactory = require('./lifecycle-factory');
 
 const path = require('path');
 const express = require('express');
@@ -11,6 +11,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 const instantiator = new InstantiatorFactory(data).build();
+const lifecycle = new LifeCycleFactory().build();
 const games = new Map();
 const timer = new Timer();
 
@@ -19,7 +20,7 @@ let broadcastGameState = (gameId) => {
 };
 
 let createGame = (gameId) => {
-	let game = new Game(gameId, timer, instantiator);
+	let game = new Game(gameId, instantiator, lifecycle);
 	game.on('changed', () => broadcastGameState(gameId));
 	return game;
 };
