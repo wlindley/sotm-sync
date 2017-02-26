@@ -2,11 +2,11 @@ const EventEmitter = require('events').EventEmitter;
 const seconds = require('./timer').seconds;
 
 class Game extends EventEmitter {
-	constructor(gameId, timer, templateInstantiator) {
+	constructor(gameId, templateInstantiator, entityLifecycle) {
 		super();
 		this._gameId = gameId;
-		this._timer = timer;
 		this._templateInstantiator = templateInstantiator;
+		this._entityLifecycle = entityLifecycle;
 		this._nextEntityId = 0;
 		this._objects = [];
 	}
@@ -31,20 +31,17 @@ class Game extends EventEmitter {
 		let entity = this._getEntityById(entityId);
 		if (entity && Number.isInteger(entity.currentHp)) {
 			this._applyHpDelta(entity, hpDelta);
+			this._entityLifecycle.hpChanged(entity, this);
 			this._dispatchChanged();
-			if (0 === entity.currentHp) {
-				this._timer.wait(seconds(1), () => {
-					if (0 === entity.currentHp)
-						this.removeEntity(entity.id);
-				});
-			}
 		}
 	}
 
 	removeEntity(entityId) {
 		let index = this._objects.findIndex(obj => entityId === obj.id);
 		if (0 <= index) {
+			let instance = this._objects[index];
 			this._objects.splice(index, 1);
+			this._entityLifecycle.destroyed(instance, this);
 			this._dispatchChanged();
 		}
 	}
@@ -58,12 +55,9 @@ class Game extends EventEmitter {
 		for (let instance of instances) {
 			this._assignSequentialEntityId(instance);
 			this._assignParentId(instance, parentId);
+			this._entityLifecycle.created(instance, this);
 			this._objects.push(instance);
 		}
-		/*
-		if (addition.hasOwnProperty('initialHp'))
-			addition.currentHp = addition.initialHp;
-		*/
 		this._dispatchChanged();
 	}
 

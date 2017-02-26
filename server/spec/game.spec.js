@@ -1,13 +1,11 @@
 const Game = require('../src/game');
-const Timer = require('./fake-timer').Timer;
 
 describe('Game', () => {
 	beforeEach(() => {
 		this.gameId = "12345";
-		this.timer = new Timer();
 		this.templateInstantiator = jasmine.createSpyObj('TemplateInstantiator', ['instantiate']);
-		//this.entityLifecycle = jasmine.createSpyObj('EntityLifecycle', ['created', 'destroyed']);
-		this.testObj = new Game(this.gameId, this.timer, this.templateInstantiator/*, this.entityLifecycle*/);
+		this.entityLifecycle = jasmine.createSpyObj('EntityLifecycle', ['created', 'hpChanged', 'destroyed']);
+		this.testObj = new Game(this.gameId, this.templateInstantiator, this.entityLifecycle);
 	});
 
 	describe('serializeState', () => {
@@ -28,15 +26,6 @@ describe('Game', () => {
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(1);
 			expect(state.objects[0]).toBe(instance);
-			/*
-			let legacy = state.objects[0];
-			expect(legacy.name).toBe('legacy');
-			expect(legacy.type).toBe('hero');
-			expect(legacy.subtype).toBe('character');
-			expect(legacy.displayName).toBe('Legacy');
-			expect(legacy.initialHp).toBe(5);
-			expect(legacy.currentHp).toBe(5);
-			*/
 		});
 
 		it('adds entity id to created entities', () => {
@@ -48,6 +37,15 @@ describe('Game', () => {
 			expect(state.objects[1].id).toBe(1);
 		});
 
+		it('calls lifecycle created for each entity', () => {
+			let entity1 = {name: 'foo'};
+			let entity2 = {name: 'bar'};
+			this.templateInstantiator.instantiate.and.returnValue([entity1, entity2]);
+			this.testObj.createCharacter('tachyon');
+			expect(this.entityLifecycle.created).toHaveBeenCalledWith(entity1, this.testObj);
+			expect(this.entityLifecycle.created).toHaveBeenCalledWith(entity2, this.testObj);
+		});
+
 		it('does nothing when instantiator returns no entities', () => {
 			this.templateInstantiator.instantiate.and.callFake((templateName) => {
 				expect(templateName).toBe('non-existant');
@@ -56,6 +54,7 @@ describe('Game', () => {
 			this.testObj.createCharacter('non-existant');
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(0);
+			expect(this.entityLifecycle.created).not.toHaveBeenCalled();
 		});
 
 		it('dispatches changed event', () => {
@@ -89,16 +88,6 @@ describe('Game', () => {
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(2);
 			expect(state.objects[1].name).toBe('legacyring');
-			/*
-			let legacyRing = state.objects[1];
-			expect(legacyRing.name).toBe('legacyring');
-			expect(legacyRing.type).toBe('hero');
-			expect(legacyRing.subtype).toBe('target');
-			expect(legacyRing.displayName).toBe('Legacy Ring');
-			expect(legacyRing.initialHp).toBe(2);
-			expect(legacyRing.currentHp).toBe(2);
-			expect(legacyRing.parentId).toBe(0);
-			*/
 		});
 
 		it('adds entity id to created entities', () => {
@@ -115,6 +104,12 @@ describe('Game', () => {
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(2);
 			expect(state.objects[1].parentId).toBe(0);
+		});
+
+		it('calls lifecycle created for created entity', () => {
+			this.testObj.createCharacter('legacy');
+			this.testObj.createTarget(0, 'legacyring');
+			expect(this.entityLifecycle.created).toHaveBeenCalledWith(jasmine.objectContaining({name: 'legacyring'}), this.testObj);
 		});
 
 		it('does nothing if entity does not exist', () => {
@@ -190,6 +185,12 @@ describe('Game', () => {
 			expect(legacy.currentHp).toBe(5);
 		});
 
+		it('calls lifecycle hpChanged with entity', () => {
+			this.testObj.createCharacter('legacy');
+			this.testObj.modifyHp(0, -1);
+			expect(this.entityLifecycle.hpChanged).toHaveBeenCalledWith(jasmine.objectContaining({name: 'legacy'}), this.testObj);
+		});
+
 		it('does nothing when entity does not exist', () => {
 			this.testObj.modifyHp(0, -1);
 		});
@@ -210,14 +211,6 @@ describe('Game', () => {
 			this.testObj.modifyHp(0, -1);
 			expect(dispatchCount).toBe(2);
 		});
-
-		it('removes entity after delay when it reaches zero hp', () => {
-			this.testObj.createCharacter('legacy');
-			this.testObj.modifyHp(0, -5);
-			this.timer.dispatchCallbacks();
-			let state = this.testObj.serializeState();
-			expect(state.objects.length).toBe(0);
-		});
 	});
 
 	describe('removeEntity', () => {
@@ -230,6 +223,12 @@ describe('Game', () => {
 			expect(this.testObj.serializeState().objects.length).toBe(1);
 			this.testObj.removeEntity(0);
 			expect(this.testObj.serializeState().objects.length).toBe(0);
+		});
+
+		it('calls lifecycle destroyed with entity', () => {
+			this.testObj.createCharacter('legacy');
+			this.testObj.removeEntity(0);
+			expect(this.entityLifecycle.destroyed).toHaveBeenCalledWith(jasmine.objectContaining({name: 'legacy'}), this.testObj);
 		});
 
 		it('dispatches changed event', () => {
