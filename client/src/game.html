@@ -21,11 +21,13 @@
 							<h2 class="panel-title">Villains</h2>
 							<dropdown-button label="Add" options.bind="villainOptions" delegates.bind="characterDelegates"></dropdown-button>
 						</div>
-						<ul class="list-group target-group">
-							<li class="list-group-item" repeat.for="villain of villains">
-								<entity data.bind="villain"></entity>
-							</li>
-						</ul>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-6 col-md-3" repeat.for="villain of villains">
+									<entity data.bind="villain"></entity>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div></div>
 
@@ -35,11 +37,13 @@
 							<h2 class="panel-title">Environments</h2>
 							<dropdown-button label="Add" options.bind="environmentOptions" delegates.bind="characterDelegates"></dropdown-button>
 						</div>
-						<ul class="list-group target-group">
-							<li class="list-group-item" repeat.for="environment of environments">
-								<entity data.bind="environment"></entity>
-							</li>
-						</ul>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-6 col-md-3" repeat.for="environment of environments">
+									<entity data.bind="environment"></entity>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div></div>
 
@@ -49,11 +53,13 @@
 							<h2 class="panel-title">Heroes</h2>
 							<dropdown-button label="Add" options.bind="heroOptions" delegates.bind="characterDelegates"></dropdown-button>
 						</div>
-						<ul class="list-group target-group">
-							<li class="list-group-item" repeat.for="hero of heroes">
-								<entity data.bind="hero"></entity>
-							</li>
-						</ul>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-6 col-md-3" repeat.for="hero of heroes">
+									<entity data.bind="hero"></entity>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div></div>
 			</div>

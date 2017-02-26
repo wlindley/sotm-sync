@@ -1,15 +1,21 @@
 <template>
-	<strong>${name}</strong><span if.bind="showHp"> - ${currentHp} / ${initialHp}</span>
-	<div class="btn-group" if.bind="showHp">
-		<button type="button" class="btn btn-default btn-md" click.delegate="decrementHp()">
-			<span class="glyphicon glyphicon-minus"></span>
-		</button>
-		<button type="button" class="btn btn-default btn-md" click.delegate="incrementHp()">
-			<span class="glyphicon glyphicon-plus"></span>
-		</button>
+	<div class="thumbnail text-center entity">
+		<a class="pull-right text-danger pointer" click.delegate="remove()">
+			<span class="glyphicon glyphicon-remove"></span>
+		</a>
+
+		<h2>${name}</h2>
+
+		<p if.bind="showHp">
+			<button type="button" class="btn btn-default btn-md" click.delegate="decrementHp()">
+				<span class="glyphicon glyphicon-minus"></span>
+			</button>
+			${currentHp} / ${initialHp}
+			<button type="button" class="btn btn-default btn-md" click.delegate="incrementHp()">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</p>
+
+		<dropdown-button label="Create Target" options.bind="targets" delegates.bind="createTargetDelegates" if.bind="showTargetCreationDropdown"></dropdown-button>
 	</div>
-	<dropdown-button label="Create Target" options.bind="targets" delegates.bind="createTargetDelegates" if.bind="showTargetCreationDropdown"></dropdown-button>
-	<button type="button" class="btn btn-danger btn-md" click.delegate="remove()">
-		<span class="glyphicon glyphicon-remove"></span>
-	</button>
 </template>
