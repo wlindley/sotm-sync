@@ -14,7 +14,7 @@ let broadcastGameState = (gameId) => {
 	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});
 };
 
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 app.post('/create-game', (req, res) => {
 	res.json({
@@ -58,4 +58,6 @@ io.on('connection', (socket) => {
 	});
 });
 
-server.listen(80);
+server.listen(process.env.PORT || 80, () => {
+	console.log('SotM Sync listening on http://%s:%s', server.address().address, server.address().port);
+});
