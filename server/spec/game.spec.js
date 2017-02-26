@@ -4,38 +4,10 @@ const Timer = require('./fake-timer').Timer;
 describe('Game', () => {
 	beforeEach(() => {
 		this.gameId = "12345";
-		this.data = [
-			{
-				name: 'legacy',
-				type: 'hero',
-				subtype: 'character',
-				displayName: 'Legacy',
-				initialHp: 5,
-				childTargets: ['legacyring', 'no-target']
-			},
-			{
-				name: 'legacyring',
-				type: 'hero',
-				subtype: 'target',
-				displayName: 'Legacy Ring',
-				initialHp: 2
-			},
-			{
-				name: 'raptorbot',
-				type: 'hero',
-				subtype: 'target',
-				displayName: 'Raptorbot',
-				initialHp: 3
-			},
-			{
-				name: 'megalopolis',
-				type: 'environment',
-				subtype: 'character',
-				displayName: 'Megalopolis'
-			}
-		];
 		this.timer = new Timer();
-		this.testObj = new Game(this.gameId, this.data, this.timer);
+		this.templateInstantiator = jasmine.createSpyObj('TemplateInstantiator', ['instantiate']);
+		//this.entityLifecycle = jasmine.createSpyObj('EntityLifecycle', ['created', 'destroyed']);
+		this.testObj = new Game(this.gameId, this.timer, this.templateInstantiator/*, this.entityLifecycle*/);
 	});
 
 	describe('serializeState', () => {
@@ -46,10 +18,17 @@ describe('Game', () => {
 	});
 
 	describe('createCharacter', () => {
-		it('instantiates character from data template', () => {
+		it('instantiates character using instantiator', () => {
+			let instance = {name: 'foo'};
+			this.templateInstantiator.instantiate.and.callFake((templateName) => {
+				expect(templateName).toBe('legacy');
+				return [instance];
+			});
 			this.testObj.createCharacter('legacy');
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(1);
+			expect(state.objects[0]).toBe(instance);
+			/*
 			let legacy = state.objects[0];
 			expect(legacy.name).toBe('legacy');
 			expect(legacy.type).toBe('hero');
@@ -57,15 +36,30 @@ describe('Game', () => {
 			expect(legacy.displayName).toBe('Legacy');
 			expect(legacy.initialHp).toBe(5);
 			expect(legacy.currentHp).toBe(5);
+			*/
 		});
 
-		it('does nothing with invalid template name', () => {
+		it('adds entity id to created entities', () => {
+			this.templateInstantiator.instantiate.and.returnValue([{name: 'foo'}, {name: 'bar'}]);
+			this.testObj.createCharacter('tachyon');
+			let state = this.testObj.serializeState();
+			expect(state.objects.length).toBe(2);
+			expect(state.objects[0].id).toBe(0);
+			expect(state.objects[1].id).toBe(1);
+		});
+
+		it('does nothing when instantiator returns no entities', () => {
+			this.templateInstantiator.instantiate.and.callFake((templateName) => {
+				expect(templateName).toBe('non-existant');
+				return [];
+			});
 			this.testObj.createCharacter('non-existant');
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(0);
 		});
 
 		it('dispatches changed event', () => {
+			this.templateInstantiator.instantiate.and.returnValue([{name: 'foo'}]);
 			let wasDispatched = false;
 			this.testObj.on('changed', () => wasDispatched = true);
 			this.testObj.createCharacter('legacy');
@@ -74,11 +68,28 @@ describe('Game', () => {
 	});
 
 	describe('createTarget', () => {
-		it('instantiates target as child of entity from data template', () => {
+		beforeEach(() => {
+			this.templateInstantiator.instantiate.and.callFake((templateName) => {
+				if ('legacy' === templateName)
+					return [{
+						name: 'legacy',
+						childTargets: ['legacyring']
+					}];
+				if ('legacyring' === templateName)
+					return [{
+						name: 'legacyring'
+					}];
+				return [];
+			});
+		});
+
+		it('instantiates target as child of entity using instantiator', () => {
 			this.testObj.createCharacter('legacy');
 			this.testObj.createTarget(0, 'legacyring');
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(2);
+			expect(state.objects[1].name).toBe('legacyring');
+			/*
 			let legacyRing = state.objects[1];
 			expect(legacyRing.name).toBe('legacyring');
 			expect(legacyRing.type).toBe('hero');
@@ -87,6 +98,23 @@ describe('Game', () => {
 			expect(legacyRing.initialHp).toBe(2);
 			expect(legacyRing.currentHp).toBe(2);
 			expect(legacyRing.parentId).toBe(0);
+			*/
+		});
+
+		it('adds entity id to created entities', () => {
+			this.testObj.createCharacter('legacy');
+			this.testObj.createTarget(0, 'legacyring');
+			let state = this.testObj.serializeState();
+			expect(state.objects.length).toBe(2);
+			expect(state.objects[1].id).toBe(1);
+		});
+
+		it('adds parent id to created entities', () => {
+			this.testObj.createCharacter('legacy');
+			this.testObj.createTarget(0, 'legacyring');
+			let state = this.testObj.serializeState();
+			expect(state.objects.length).toBe(2);
+			expect(state.objects[1].parentId).toBe(0);
 		});
 
 		it('does nothing if entity does not exist', () => {
@@ -102,7 +130,7 @@ describe('Game', () => {
 			expect(state.objects.length).toBe(1);
 		});
 
-		it('does nothing if named template does not exist', () => {
+		it('does nothing when instantiator returns no entities', () => {
 			this.testObj.createCharacter('legacy');
 			this.testObj.createTarget(0, 'no-target');
 			let state = this.testObj.serializeState();
@@ -119,13 +147,29 @@ describe('Game', () => {
 	});
 
 	describe('modifyHp', () => {
+		beforeEach(() => {
+			this.templateInstantiator.instantiate.and.callFake((templateName) => {
+				if ('legacy' === templateName)
+					return [{
+						name: 'legacy',
+						initialHp: 5,
+						currentHp: 5
+					}];
+				if ('megalopolis' === templateName)
+					return [{
+						name: 'megalopolis'
+					}];
+				return [];
+			});
+		});
+
 		it('applies hp delta to specified entity', () => {
 			this.testObj.createCharacter('legacy');
 			this.testObj.modifyHp(0, -1);
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(1);
 			let legacy = state.objects[0];
-			expect(legacy.currentHp).toBe(legacy.initialHp - 1);
+			expect(legacy.currentHp).toBe(4);
 		});
 
 		it('does not let hp go below zero', () => {
@@ -143,7 +187,7 @@ describe('Game', () => {
 			let state = this.testObj.serializeState();
 			expect(state.objects.length).toBe(1);
 			let legacy = state.objects[0];
-			expect(legacy.currentHp).toBe(legacy.initialHp);
+			expect(legacy.currentHp).toBe(5);
 		});
 
 		it('does nothing when entity does not exist', () => {
@@ -177,6 +221,10 @@ describe('Game', () => {
 	});
 
 	describe('removeEntity', () => {
+		beforeEach(() => {
+			this.templateInstantiator.instantiate.and.returnValue([{name: 'legacy'}]);
+		});
+
 		it('removes entity from object list', () => {
 			this.testObj.createCharacter('legacy');
 			expect(this.testObj.serializeState().objects.length).toBe(1);

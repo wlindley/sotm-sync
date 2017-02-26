@@ -2,12 +2,12 @@ const EventEmitter = require('events').EventEmitter;
 const seconds = require('./timer').seconds;
 
 class Game extends EventEmitter {
-	constructor(gameId, data, timer) {
+	constructor(gameId, timer, templateInstantiator) {
 		super();
-		this._nextEntityId = 0;
 		this._gameId = gameId;
-		this._data = data;
 		this._timer = timer;
+		this._templateInstantiator = templateInstantiator;
+		this._nextEntityId = 0;
 		this._objects = [];
 	}
 
@@ -17,21 +17,18 @@ class Game extends EventEmitter {
 		};
 	}
 
-	createTarget(parentId, name) {
-		let parent = this._objects.find(obj => parentId === obj.id);
-		let template = this._data.find(t => name === t.name);
-		if (template && parent && parent.childTargets.includes(name))
-			this._addFromTemplate(template, parentId);
+	createCharacter(name) {
+		this._addFromTemplate(name);
 	}
 
-	createCharacter(name) {
-		let template = this._data.find(t => t.name === name);
-		if (template)
-			this._addFromTemplate(template);
+	createTarget(parentId, name) {
+		let parent = this._getEntityById(parentId);
+		if (parent && parent.childTargets.includes(name))
+			this._addFromTemplate(name, parentId);
 	}
 
 	modifyHp(entityId, hpDelta) {
-		let entity = this._objects.find(obj => entityId === obj.id);
+		let entity = this._getEntityById(entityId);
 		if (entity && Number.isInteger(entity.currentHp)) {
 			let newHp = entity.currentHp + hpDelta;
 			entity.currentHp = Math.max(0, Math.min(entity.initialHp, newHp));
@@ -53,7 +50,14 @@ class Game extends EventEmitter {
 		}
 	}
 
-	_addFromTemplate(template, parentId=null) {
+	_addFromTemplate(templateName, parentId=null) {
+		let instances = this._templateInstantiator.instantiate(templateName);
+		for (let instance of instances) {
+			this._assignSequentialEntityId(instance);
+			this._assignParentId(instance, parentId);
+			this._objects.push(instance);
+		}
+		/*
 		let addition = Object.assign({}, template);
 		addition.id = this._nextEntityId;
 		this._nextEntityId++;
@@ -61,8 +65,22 @@ class Game extends EventEmitter {
 			addition.currentHp = addition.initialHp;
 		if (Number.isInteger(parentId))
 			addition.parentId = parentId;
-		this._objects.push(addition);
+		*/
 		this._dispatchChanged();
+	}
+
+	_assignSequentialEntityId(instance) {
+		instance.id = this._nextEntityId;
+		this._nextEntityId++;
+	}
+
+	_assignParentId(instance, parentId=null) {
+		if (Number.isInteger(parentId))
+			instance.parentId = parentId;
+	}
+
+	_getEntityById(entityId) {
+		return this._objects.find(obj => entityId === obj.id);
 	}
 
 	_dispatchChanged() {
