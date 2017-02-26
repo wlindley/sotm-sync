@@ -33,7 +33,6 @@ export class Game {
 	}
 
 	_onStateSync(state) {
-		console.log('state:', state);
 		this.villains.splice(0, this.villains.length);
 		this.environments.splice(0, this.environments.length);
 		this.heroes.splice(0, this.heroes.length);

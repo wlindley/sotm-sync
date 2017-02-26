@@ -9,21 +9,6 @@ export class Api {
 		this.ea = ea;
 		this.socket = io();
 		this.client = new HttpClient();
-		this.client.configure(config => {
-			config.withInterceptor({
-				request(req) {
-					let url = req.url.replace('localhost:9000', 'localhost:80');
-					return new Request(url, {
-						method: req.method,
-						mode: 'no-cors',//req.mode,
-						credentials: req.credentials
-					});
-				},
-				response(res) {
-					return res;
-				}
-			});
-		});
 		this.gameId = null;
 		this.dataPromise = null;
 	}
