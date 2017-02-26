@@ -13,7 +13,6 @@ const io = require('socket.io')(server);
 const instantiator = new InstantiatorFactory(data).build();
 const lifecycle = new LifeCycleFactory().build();
 const games = new Map();
-const timer = new Timer();
 
 let broadcastGameState = (gameId) => {
 	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});

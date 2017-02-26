@@ -1,4 +1,4 @@
-const DefaultTemplateInstantiator = requrie('./instantiator/default');
+const DefaultTemplateInstantiator = require('./instantiator/default');
 
 class InstantiatorFactory {
 	constructor(data) {
