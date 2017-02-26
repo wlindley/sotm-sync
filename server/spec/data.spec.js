@@ -6,7 +6,7 @@ let validType = {
 
 let validSubType = {
 	asymmetricMatch: (actual) => 'character' === actual || 'target' === actual
-}
+};
 
 describe('Data Validation', () => {
 	it('no duplicate template names', () => {
