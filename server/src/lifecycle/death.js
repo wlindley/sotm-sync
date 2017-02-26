@@ -1,15 +1,13 @@
 const seconds = require('../timer').seconds;
 
-let isDead = (entity) => {
-	return 0 >= entity.currentHp;
-};
+let isDead = (entity) => 0 >= entity.currentHp;
 
 class DeathLifecycle {
 	constructor(timer) {
 		this._timer = timer;
 	}
 
-	created(entity, game) {
+	created() {
 
 	}
 
@@ -22,7 +20,7 @@ class DeathLifecycle {
 		}
 	}
 
-	destroyed(entity, game) {
+	destroyed() {
 
 	}
 }

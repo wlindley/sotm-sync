@@ -1,5 +1,4 @@
 const EventEmitter = require('events').EventEmitter;
-const seconds = require('./timer').seconds;
 
 class Game extends EventEmitter {
 	constructor(gameId, templateInstantiator, entityLifecycle) {
