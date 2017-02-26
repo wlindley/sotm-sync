@@ -19,6 +19,7 @@ describe('Data Validation', () => {
 	});
 
 	it('each template is valid', () => {
+		let allTemplateNames = data.map((template) => template.name);
 		for (let i = 0; i < data.length; i++) {
 			let template = data[i];
 			expect(template.name).toEqual(jasmine.any(String), 'Template ' + i + ' does not have a name');
@@ -26,6 +27,27 @@ describe('Data Validation', () => {
 			expect(template.type).toEqual(validType, 'Template ' + template.name + ' does not have a valid type');
 			expect(template.subtype).toEqual(validSubType, 'Template ' + template.name + ' does not have a valid subtype');
 			expect(template.inList).toEqual(jasmine.any(Boolean), 'Template ' + template.name + ' does not have an inList property');
+
+			if (template.initialHp) {
+				expect(template.initialHp).toEqual(jasmine.any(Number), 'Template ' + template.name + ' has a non-Number initialHp');
+				expect(Number.isInteger(template.initialHp)).toBeTruthy('Template ' + template.name + ' has a non-integer initialHp');
+			}
+
+			if (template.childTargets) {
+				expect(template.childTargets).toEqual(jasmine.any(Array), 'Template ' + template.name + ' has invalid child targets list');
+				for (let target of template.childTargets) {
+					expect(target).toEqual(jasmine.any(String), 'Template ' + template.name + ' has a non-string child target');
+					expect(allTemplateNames.includes(target)).toBeTruthy('Template ' + template.name + ' has unknown child target ' + target);
+				}
+			}
+
+			if (template.spawnInstead) {
+				expect(template.spawnInstead).toEqual(jasmine.any(Array), 'Template ' + template.name + ' has invalid spawn instead list');
+				for (let target of template.spawnInstead) {
+					expect(target).toEqual(jasmine.any(String), 'Template ' + template.name + ' has a non-string spawn instead target');
+					expect(allTemplateNames.includes(target)).toBeTruthy('Template ' + template.name + ' has unknown spawn instead target ' + target);
+				}
+			}
 		}
 	});
 });
