@@ -1,4 +1,4 @@
-const HpInitLifecycle = require('../../src/lifecycle/hp-init-lifecycle');
+const HpInitLifecycle = require('../../src/lifecycle/hp-init');
 
 describe('HpInitLifecycle', () => {
 	beforeEach(() => {
