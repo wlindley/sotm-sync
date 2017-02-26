@@ -26,6 +26,7 @@ before_deploy:
   - cp -r client/scripts deploy/client/scripts
   - cp -r client/bootstrap deploy/client/bootstrap
   - rm -rf deploy/node_modules
+  - rm -rf deploy/spec
   - zip -r artifact.zip deploy
   
 deploy:
@@ -35,6 +36,7 @@ deploy:
     region: us-west-2
     bucket_name: sotm-sync-artifacts
     zip_file: artifact.zip
+    skip_cleanup: true
     access-key-id:
       secure: "DenPkTrc7ddUc594nKXSWJxj9ic+fDt9iunu5pIthS7R3UEuoAS1Vuj04jw7Zl9mytx2mhkMCR4dyOyGzq4lOjAo+Os2cOqZNCcQyPlleoQ3FcqDF1XObAQr18mI7WxOuWU3tElTiBtrlw2iKDvnSmmxNSangRXtKbEiHs0nhynKpnctyiXSyKsdlRh0hgenU9/hcUonFFUJdmbkN5rp3xRHuPbLasPdnmjVg7zOdGO1KFZYgxAXkdsQqn7FUZJADbk3ScqwYwsjDtASrEiOrR663sWYtg7mC4aMxbX4BYGV5PAbPWQiYA/lwhYRbwQoj5R/zz0hnSgIu4hCvgf+KOOJVBacd8bbyfk2CFIigVaDgjxtY8QoH7lDPnnrG6woJwAtbYRxwHKrflOFafkTT+DNK1QwSRU0a7WTRd3rkvfN81lN+oypRHxg1QmojW9Hpd5aNnQ4lZqgCsR6oDYYGnNt5sX6L1W5bx0AJYSW8GPjqoCR0MKxc+IYQte+7+pbOy1s5fhwVo53Catato9Now0mIh1TlpOqPKUP8ji7MjqTb0oJ3Fmg53asqu0bfw8/yR1jLDDtZDcdUgZ/ZlFQMfCkFz76OG6Ueux/jwJdzHFpsYZ4LnRVi/NW/PkKIV6f+Hh4mVBhtobxNlGTIAcGxmtM0bPKNCeOWna+Ac6pZsM="
     secret_access_key:
