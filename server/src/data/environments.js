@@ -57,6 +57,16 @@ module.exports = [
 		initialHp: 13
 	},
 
+	/* ===== Freedom Tower ===== */
+	{
+		name: "freedomtower",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "Freedom Tower",
+		childTargets: []
+	},
+
 	/* ===== The Final Wasteland ===== */
 	{
 		name: "finalwasteland",
@@ -115,6 +125,170 @@ module.exports = [
 		initialHp: 7
 	},
 
+	/* ===== Dok'Thorath Capital ===== */
+	{
+		name: "dokthorath",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "Dok'Thorath Capital",
+		childTargets: ["refugees", "looters", "freedomfighters", "ravagers", "thorathianmilitary"]
+	},
+	{
+		name: "refugees",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Abject Refugees",
+		initialHp: 2
+	},
+	{
+		name: "looters",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Defiant Looters",
+		initialHp: 3
+	},
+	{
+		name: "freedomfighters",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Freedom Fighters",
+		initialHp: 4
+	},
+	{
+		name: "ravagers",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Ravagers",
+		initialHp: 4
+	},
+	{
+		name: "thorathianmilitary",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Thorathian Military",
+		initialHp: 4
+	},
+
+	/* ===== The Enclave of the Endlings ===== */
+	{
+		name: "endlings",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "The Enclave of the Endlings",
+		childTargets: ["baahsto", "bloogo", "frazzat", "gruum", "immutus", "jansavidero", "korrupton", "orbo", "phrentat", "slamara", "szreem", "urdid", "venox"]
+	},
+	{
+		name: "baahsto",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Baahsto",
+		initialHp: 7
+	},
+	{
+		name: "bloogo",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Bloogo",
+		initialHp: 13
+	},
+	{
+		name: "frazzat",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Frazzat",
+		initialHp: 5
+	},
+	{
+		name: "gruum",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Gruum",
+		initialHp: 11
+	},
+	{
+		name: "immutus",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Immutus",
+		initialHp: 35
+	},
+	{
+		name: "jansavidero",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Jansa Vi Dero",
+		initialHp: 25
+	},
+	{
+		name: "korrupton",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Korrupton",
+		initialHp: 9
+	},
+	{
+		name: "orbo",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Orbo",
+		initialHp: 25
+	},
+	{
+		name: "phrentat",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Phrentat",
+		initialHp: 5
+	},
+	{
+		name: "slamara",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Slamara",
+		initialHp: 7
+	},
+	{
+		name: "szreem",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Szreem",
+		initialHp: 9
+	},
+	{
+		name: "urdid",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Urdid",
+		initialHp: 13
+	},
+	{
+		name: "venox",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Venox",
+		initialHp: 11
+	},
+
 	/* ===== Insula Primalis ===== */
 	{
 		name: "primalis",
@@ -122,7 +296,31 @@ module.exports = [
 		subtype: "character",
 		inList: true,
 		displayName: "Insula Primalis",
-		childTargets: []
+		childTargets: ["trex", "pterothief", "raptorpack"]
+	},
+	{
+		name: "trex",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Enraged T-rex",
+		initialHp: 15
+	},
+	{
+		name: "pterothief",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Pterodactyl Thief",
+		initialHp: 5
+	},
+	{
+		name: "raptorpack",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Velociraptor Pack",
+		initialHp: 5
 	},
 
 	/* ===== Megalopolis ===== */
@@ -157,6 +355,98 @@ module.exports = [
 		inList: true,
 		displayName: "Traffic Pileup",
 		initialHp: 10
+	},
+
+	/* ===== Mobile Defense Platform ===== */
+	{
+		name: "mobiledefenseplatform",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "Mobile Defense Platform",
+		childTargets: ["battalionbrute", "battaliongunner", "battalionmechanic", "propulsionsystem", "shieldgenerator"]
+	},
+	{
+		name: "battalionbrute",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Battalion Brute",
+		initialHp: 4
+	},
+	{
+		name: "battaliongunner",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Battalion Gunner",
+		initialHp: 3
+	},
+	{
+		name: "battalionmechanic",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Battalion Mechanic",
+		initialHp: 2
+	},
+	{
+		name: "propulsionsystem",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Propulsion Systems",
+		initialHp: 10
+	},
+	{
+		name: "shieldgenerator",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Shield Generator",
+		initialHp: 6
+	},
+
+	/* ===== Omnitron IV ===== */
+	{
+		name: "omnitroniv",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "Omnitron IV",
+		childTargets: ["defensegrid", "accumulator", "omnidrone", "technopursuer"]
+	},
+	{
+		name: "defensegrid",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Internal Defense Grid",
+		initialHp: 10
+	},
+	{
+		name: "accumulator",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Mechani-Accumulator",
+		initialHp: 5
+	},
+	{
+		name: "omnidrone",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Partial Omni-Drone",
+		initialHp: 10
+	},
+	{
+		name: "technopursuer",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Techno-Pursuer",
+		initialHp: 5
 	},
 
 	/* ===== Pike Industrial Complex ===== */
