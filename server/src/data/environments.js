@@ -57,6 +57,106 @@ module.exports = [
 		initialHp: 13
 	},
 
+	/* ===== The Celestial Tribunal ===== */
+	{
+		name: "celestialtribunal",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "The Celestial Tribunal",
+		childTargets: ["celestialadjudicator", "celestialexecutioner"]
+	},
+	{
+		name: "celestialadjudicator",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Celestial Adjudicator",
+		initialHp: 12
+	},
+	{
+		name: "celestialexecutioner",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Celestial Executioner",
+		initialHp: 6
+	},
+
+	/* ===== The Court of Blood ===== */
+	{
+		name: "courtofblood",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "The Court of Blood",
+		childTargets: ["angrymob", "bathory", "katarina", "ilona", "ficko", "fulepet", "erzsi", "dorotya"]
+	},
+	{
+		name: "angrymob",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Angry Mob",
+		initialHp: 10
+	},
+	{
+		name: "bathory",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Blood Countess Bathory",
+		initialHp: 15
+	},
+	{
+		name: "katarina",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Dame Katarina",
+		initialHp: 11
+	},
+	{
+		name: "ilona",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Dowager Ilona",
+		initialHp: 7
+	},
+	{
+		name: "ficko",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Drudge Ficko",
+		initialHp: 5
+	},
+	{
+		name: "fulepet",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Hunter Fulepet",
+		initialHp: 12
+	},
+	{
+		name: "erzsi",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Matron Erzsi",
+		initialHp: 12
+	},
+	{
+		name: "dorotya",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Relict Dorotya",
+		initialHp: 9
+	},
+
 	/* ===== Freedom Tower ===== */
 	{
 		name: "freedomtower",
@@ -321,6 +421,16 @@ module.exports = [
 		inList: true,
 		displayName: "Velociraptor Pack",
 		initialHp: 5
+	},
+
+	/* ===== Madame Mittermeier's ===== */
+	{
+		name: "madamemittermeiers",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "Madame Mittermeier's Fantastical Festival of Conundrums and Curiosities",
+		childTargets: []
 	},
 
 	/* ===== Megalopolis ===== */
@@ -633,6 +743,40 @@ module.exports = [
 		inList: true,
 		displayName: "Water Trough",
 		initialHp: 7
+	},
+
+	/* ===== The Temple of Zhu Long ===== */
+	{
+		name: "templeofzhulong",
+		type: "environment",
+		subtype: "character",
+		inList: true,
+		displayName: "The Temple of Zhu Long",
+		childTargets: ["poisoner", "trueform", "shinobiassassin"]
+	},
+	{
+		name: "poisoner",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Apprentice Poisoner",
+		initialHp: 3
+	},
+	{
+		name: "trueform",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "The True Form",
+		initialHp: 13
+	},
+	{
+		name: "shinobiassassin",
+		type: "environment",
+		subtype: "target",
+		inList: true,
+		displayName: "Shinobi Assassin",
+		initialHp: 3
 	},
 
 	/* ===== Time Cataclysm ===== */
