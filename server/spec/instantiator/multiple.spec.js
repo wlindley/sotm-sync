@@ -45,7 +45,7 @@ describe('MultipleTemplateInstantiator', () => {
 			return {};
 		});
 
-		this.testObj = new MultipleTemplateInstantiator(this.data, this.baseInstantiator);		
+		this.testObj = new MultipleTemplateInstantiator(this.data, this.baseInstantiator);
 	});
 
 	describe('instantiate', () => {
