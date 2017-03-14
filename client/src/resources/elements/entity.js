@@ -35,6 +35,10 @@ export let Entity = decorators(
 		return Number.isInteger(this.data.currentHp) && Number.isInteger(this.data.initialHp);
 	}
 
+	get isPrimary() {
+		return 'character' === this.data.subtype;
+	}
+
 	get targets() {
 		return this.data.childTargets.map(childName => {
 			let template = this.templates.find(t => childName === t.name);
