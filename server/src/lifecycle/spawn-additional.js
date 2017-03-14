@@ -10,7 +10,7 @@ class SpawnAdditionalLifecycle {
 	}
 
 	hpChanged() {
-		
+
 	}
 
 	destroyed() {
