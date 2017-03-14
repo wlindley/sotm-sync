@@ -4,7 +4,7 @@
 			<span class="glyphicon glyphicon-remove"></span>
 		</a>
 
-		<h2>${name}</h2>
+		<h2 class="${isPrimary? 'text-primary' : 'text-muted'}">${name}</h2>
 
 		<p if.bind="showHp">
 			<button type="button" class="btn btn-default btn-md" click.delegate="decrementHp()">
