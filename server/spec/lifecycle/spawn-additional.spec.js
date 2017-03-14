@@ -1,9 +1,10 @@
 const SpawnAdditionalLifecycle = require('../../src/lifecycle/spawn-additional');
+const Spawner = require('../../src/spawner');
 
 describe('SpawnAdditionalLifecycle', () => {
 	beforeEach(() => {
 		this.game = jasmine.createSpyObj('Game', ['createCharacter', 'createTarget', 'modifyHp', 'removeEntity']);
-		this.testObj = new SpawnAdditionalLifecycle();
+		this.testObj = new SpawnAdditionalLifecycle(new Spawner());
 	});
 
 	describe('created', () => {
