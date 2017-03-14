@@ -1,12 +1,11 @@
 class SpawnAdditionalLifecycle {
-	created(entity, game) {
-		if (entity.hasOwnProperty('spawnCharacterOnCreated'))
-			for (let name of entity.spawnCharacterOnCreated)
-				game.createCharacter(name);
+	constructor(spawner) {
+		this._spawner = spawner;
+	}
 
-		if (entity.hasOwnProperty('spawnTargetOnCreated'))
-			for (let name of entity.spawnTargetOnCreated)
-				game.createTarget(entity.id, name);
+	created(entity, game) {
+		this._spawner.spawnCharactersForProperty(entity, 'spawnCharacterOnCreated', game);
+		this._spawner.spawnTargetsForProperty(entity, 'spawnTargetOnCreated', game);
 	}
 
 	hpChanged() {

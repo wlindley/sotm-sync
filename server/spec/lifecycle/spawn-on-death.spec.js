@@ -1,9 +1,10 @@
 const SpawnOnDeathLifecycle = require('../../src/lifecycle/spawn-on-death');
+const Spawner = require('../../src/spawner');
 
 describe('SpawnOnDeathLifecycle', () => {
 	beforeEach(() => {
 		this.game = jasmine.createSpyObj('Game', ['createCharacter', 'createTarget', 'modifyHp', 'removeEntity']);
-		this.testObj = new SpawnOnDeathLifecycle();
+		this.testObj = new SpawnOnDeathLifecycle(new Spawner());
 	});
 
 	describe('created', () => {
