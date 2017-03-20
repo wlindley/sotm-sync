@@ -1,5 +1,5 @@
 module.exports = [
-	/* ===== Akash"Bhuta ===== */
+	/* ===== Akash'Bhuta ===== */
 	{
 		name: "akashbhuta",
 		type: "villain",
@@ -191,12 +191,22 @@ module.exports = [
 	},
 	/* ===== Baron Blade ===== */
 	{
-		name: "baronblade",
+		name: "baronbladeinventor",
 		type: "villain",
 		subtype: "character",
 		inList: true,
-		displayName: "Baron Blade",
+		displayName: "Baron Blade - T.I.B. Inventor",
 		initialHp: 40,
+		childTargets: ["bladebattalion", "elementalredistributor", "defenseplatform", "remoteturret"],
+		spawnCharacterOnDestroyed: ["baronbladescientist"]
+	},
+	{
+		name: "baronbladescientist",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Baron Blade - Vengeful Mad Scientist",
+		initialHp: 30,
 		childTargets: ["bladebattalion", "elementalredistributor", "defenseplatform", "remoteturret"]
 	},
 	{
@@ -304,5 +314,75 @@ module.exports = [
 		inList: true,
 		displayName: "Trueshot",
 		initialHp: 9
+	},
+	/* ===== Kismet ===== */
+	{
+		name: "kismet",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Kismet",
+		initialHp: 70,
+		spawnTargetOnCreated: ["talismanheirloom"]
+	},
+	{
+		name: "talismanheirloom",
+		type: "villain",
+		subtype: "target",
+		inList: false,
+		displayName: "The Talisman - Enchanted Heirloom",
+		initialHp: 7,
+		spawnTargetOnDestroyed: ["talismancharm"]
+	},
+	{
+		name: "talismancharm",
+		type: "villain",
+		subtype: "target",
+		inList: false,
+		displayName: "The Talisman - Stolen Charm",
+		initialHp: 7,
+		spawnTargetOnDestroyed: ["talismanheirloom"]
+	},
+	/* ===== Omnitron ===== */
+	{
+		name: "omnitron",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Omnitron",
+		initialHp: 100,
+		childTargets: ["electropulse", "s83", "s84", "s85"]
+	},
+	{
+		name: "electropulse",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Electro-pulse Explosive",
+		initialHp: 15
+	},
+	{
+		name: "s83",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "S-83 Assault Drone",
+		initialHp: 4
+	},
+	{
+		name: "s84",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "S-84 Automaton Drone",
+		initialHp: "H"
+	},
+	{
+		name: "s85",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "S-85 Repair Drone",
+		initialHp: 4
 	},
 ];
