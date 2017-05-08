@@ -704,4 +704,32 @@ module.exports = [
 		displayName: "S-85 Repair Drone",
 		initialHp: 4
 	},
+	/* ===== Plague Rat ===== */
+	{
+		name: "plaguerat",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Plague Rat",
+		initialHp: 85,
+		spawnTargetOnCreated: ["plaguelocus"],
+		childTargets: ["plaguelocus"]
+	},
+	{
+		name: "plaguelocus",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Plague Locus",
+		initialHp: 13
+	},
+	/* ===== Spite ===== */
+	{
+		name: "spite",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Spite",
+		initialHp: 80
+	},
 ];
