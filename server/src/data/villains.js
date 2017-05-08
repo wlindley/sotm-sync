@@ -315,6 +315,242 @@ module.exports = [
 		displayName: "Trueshot",
 		initialHp: 9
 	},
+	/* ===== Citizen Dawn ===== */
+	{
+		name: "citizendawn",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Citizen Dawn",
+		initialHp: 80,
+		childTargets: ["citizenanvil", "citizenassault", "citizenautumn", "citizenbattery", "citizenblood", "citizendare", "citizenhammer", "citizenspring", "citizensummer", "citizensweat", "citizentears", "citizentruth", "citizenwinter"]
+	},
+	{
+		name: "citizenanvil",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Anvil",
+		initialHp: 7
+	},
+	{
+		name: "citizenassault",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Assault",
+		initialHp: 4
+	},
+	{
+		name: "citizenautumn",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Autumn",
+		initialHp: 6
+	},
+	{
+		name: "citizenbattery",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Battery",
+		initialHp: 7
+	},
+	{
+		name: "citizenblood",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Blood",
+		initialHp: 5
+	},
+	{
+		name: "citizendare",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Dare",
+		initialHp: 3
+	},
+	{
+		name: "citizenhammer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Hammer",
+		initialHp: 3
+	},
+	{
+		name: "citizenspring",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Spring",
+		initialHp: 6
+	},
+	{
+		name: "citizensummer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Summer",
+		initialHp: 4
+	},
+	{
+		name: "citizensweat",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Sweat",
+		initialHp: 5
+	},
+	{
+		name: "citizentears",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Tears",
+		initialHp: 5
+	},
+	{
+		name: "citizentruth",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Truth",
+		initialHp: 7
+	},
+	{
+		name: "citizenwinter",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Winter",
+		initialHp: 4
+	},
+	/* ===== Grand Warlord Voss ===== */
+	{
+		name: "voss",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Grand Warlord Voss",
+		initialHp: 90,
+		childTargets: ["lttamar", "ltvyktor", "gbbanshee", "gbbionaut", "gbfiresworn", "gbfrosthound", "gbguard", "gbionlancer", "gbpsiweaver", "gbshockinfantry", "gbsoldier", "tcfconqueror", "tcfstalwart", "quarkdrive"]
+	},
+	{
+		name: "lttamar",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Field Lieutenant Tamar",
+		initialHp: 5
+	},
+	{
+		name: "ltvyktor",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "First Lieutenant Vyktor",
+		initialHp: 5
+	},
+	{
+		name: "gbbanshee",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Banshee",
+		initialHp: 3
+	},
+	{
+		name: "gbbionaut",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Bionaut",
+		initialHp: 3
+	},
+	{
+		name: "gbfiresworn",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Firesworn",
+		initialHp: 3
+	},
+	{
+		name: "gbfrosthound",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Frosthound",
+		initialHp: 3
+	},
+	{
+		name: "gbguard",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Guard",
+		initialHp: 3
+	},
+	{
+		name: "gbionlancer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Ion-Lancer",
+		initialHp: 3
+	},
+	{
+		name: "gbpsiweaver",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Psi-Weaver",
+		initialHp: 3
+	},
+	{
+		name: "gbshockinfantry",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Shock Infantry",
+		initialHp: 3
+	},
+	{
+		name: "gbsoldier",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Gene-Bound Soldier",
+		initialHp: 3
+	},
+	{
+		name: "tcfconqueror",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "TCF Conqueror",
+		initialHp: 15
+	},
+	{
+		name: "tcfstalwart",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "TCF Stalwart",
+		initialHp: 18
+	},
+	{
+		name: "quarkdrive",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Quark-Drive Translocator",
+		initialHp: 10
+	},
 	/* ===== Kismet ===== */
 	{
 		name: "kismet",
@@ -342,6 +578,89 @@ module.exports = [
 		displayName: "The Talisman - Stolen Charm",
 		initialHp: 7,
 		spawnTargetOnDestroyed: ["talismanheirloom"]
+	},
+	/* ===== The Matriarch ===== */
+	{
+		name: "matriarch",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "The Matriarch",
+		initialHp: 70,
+		spawnTargetOnCreated: ["maskofthematriarch"],
+		childTargets: ["rooks", "carrionfields", "jackdaws", "huginn", "vultures", "maskofthematriarch", "muninn", "crows", "ravens"]
+	},
+	{
+		name: "rooks",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Building of Rooks",
+		initialHp: 1
+	},
+	{
+		name: "carrionfields",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Carrion Fields",
+		initialHp: 15
+	},
+	{
+		name: "jackdaws",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Clattering of Jackdaws",
+		initialHp: 1
+	},
+	{
+		name: "huginn",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Huginn",
+		initialHp: 7
+	},
+	{
+		name: "vultures",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Kettle of Vultures",
+		initialHp: 1
+	},
+	{
+		name: "maskofthematriarch",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Mask of the Matriarch",
+		initialHp: 9
+	},
+	{
+		name: "muninn",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Muninn",
+		initialHp: 7
+	},
+	{
+		name: "crows",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Murder of Crows",
+		initialHp: 1
+	},
+	{
+		name: "ravens",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Unkindness of Ravens",
+		initialHp: 1
 	},
 	/* ===== Omnitron ===== */
 	{
