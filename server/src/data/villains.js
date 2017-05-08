@@ -99,6 +99,64 @@ module.exports = [
 		displayName: "Sonic Mine",
 		initialHp: 1
 	},
+	/* ===== Ambuscade (Vengeance) ===== */
+	{
+		name: "vengeanceambuscade",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Ambuscade (Vengeance)",
+		initialHp: 25,
+		childTargets: ["deserteagle", "enticingtarget", "glamour", "magman", "raymanta", "revolt"]
+	},
+	{
+		name: "deserteagle",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Desert Eagle",
+		initialHp: 6
+	},
+	{
+		name: "enticingtarget",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Enticing Target",
+		initialHp: 3
+	},
+	{
+		name: "glamour",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Glamour",
+		initialHp: 6
+	},
+	{
+		name: "magman",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Magman",
+		initialHp: 6
+	},
+	{
+		name: "raymanta",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Ray Manta",
+		initialHp: 6
+	},
+	{
+		name: "revolt",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Re-Volt",
+		initialHp: 6
+	},
 	/* ===== Apostate ===== */
 	{
 		name: "apostate",
@@ -240,6 +298,180 @@ module.exports = [
 		inList: true,
 		displayName: "Powered Remote Turret",
 		initialHp: 7
+	},
+	/* ===== Baron Blade (Vengeance) ===== */
+	{
+		name: "vengeancebaronblade",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Baron Blade (Vengeance)",
+		initialHp: 32,
+		childTargets: ["citizenslash", "displacingteleporter", "empyreon", "impulsionbeam", "negationbands", "omniblade", "ruin", "zhulong"]
+	},
+	{
+		name: "citizenslash",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Citizen Slash",
+		initialHp: 6
+	},
+	{
+		name: "displacingteleporter",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Displacing Teleporter",
+		initialHp: 6
+	},
+	{
+		name: "empyreon",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Empyreon",
+		initialHp: 11
+	},
+	{
+		name: "impulsionbeam",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Impulsion Beam",
+		initialHp: 8
+	},
+	{
+		name: "negationbands",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Negation Bands",
+		initialHp: 4
+	},
+	{
+		name: "omniblade",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Omni-Blade",
+		initialHp: 15
+	},
+	{
+		name: "ruin",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Ruin",
+		initialHp: 9
+	},
+	{
+		name: "zhulong",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Zhu Long",
+		initialHp: 8
+	},
+	/* ===== Biomancer (Vengeance) ===== */
+	{
+		name: "biomancer",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Biomancer (Vengeance)",
+		initialHp: 18,
+		childTargets: ["carbonadept", "cloneranger", "duplexpatriette", "homunculus", "mrfacsimile", "repliblade", "tempersonation"]
+	},
+	{
+		name: "carbonadept",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Carbon Adept",
+		initialHp: 5
+	},
+	{
+		name: "cloneranger",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Clone-Ranger",
+		initialHp: 5
+	},
+	{
+		name: "duplexpatriette",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Duplexpatriette",
+		initialHp: 5
+	},
+	{
+		name: "homunculus",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Homunculus",
+		initialHp: 5
+	},
+	{
+		name: "mrfacsimile",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Mr. Facsimile",
+		initialHp: 5
+	},
+	{
+		name: "repliblade",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Repli-Blade",
+		initialHp: 5
+	},
+	{
+		name: "tempersonation",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Tempersonation",
+		initialHp: 5
+	},
+	/* ===== Bugbear (Vengeance) ===== */
+	{
+		name: "bugbear",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Bugbear (Vengeance)",
+		initialHp: 30,
+		childTargets: ["ammit", "cueball", "quetzalcoatl"]
+	},
+	{
+		name: "ammit",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Ammit",
+		initialHp: 10
+	},
+	{
+		name: "cueball",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Cueball",
+		initialHp: 8
+	},
+	{
+		name: "quetzalcoatl",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Quetzalcoatl",
+		initialHp: 12
 	},
 	/* ===== La Capitan ===== */
 	{
