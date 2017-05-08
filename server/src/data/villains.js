@@ -547,6 +547,133 @@ module.exports = [
 		displayName: "Trueshot",
 		initialHp: 9
 	},
+	/* ===== La Capitan (Vengeance) ===== */
+	{
+		name: "vengeancelacapitan",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "La Capitan (Vengeance)",
+		initialHp: 24,
+		spawnTargetOnCreated: ["chiquito"],
+		childTargets: ["chiquito"]
+	},
+	{
+		name: "chiquito",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Chiquito",
+		initialHp: 4
+	},
+	/* ===== The Chairman ===== */
+	{
+		name: "chairman",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "The Chairman",
+		initialHp: 35,
+		spawnCharacterOnCreated: ["operative"],
+		childTargets: ["broker", "contract", "crookedcop", "deputy", "enforcers", "fence", "hiredgun", "informant", "muscle", "thief"]
+	},
+	{
+		name: "operative",
+		type: "villain",
+		subtype: "character",
+		inList: false,
+		displayName: "The Operative",
+		initialHp: 45
+	},
+	{
+		name: "broker",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Broker",
+		initialHp: 5
+	},
+	{
+		name: "contract",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Contract",
+		initialHp: 7
+	},
+	{
+		name: "crookedcop",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Crooked Cop",
+		initialHp: 5
+	},
+	{
+		name: "deputy",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Deputy",
+		initialHp: 9
+	},
+	{
+		name: "enforcers",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Enforcers",
+		initialHp: 6
+	},
+	{
+		name: "fence",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Fence",
+		initialHp: 6
+	},
+	{
+		name: "hiredgun",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Hired Gun",
+		initialHp: 3
+	},
+	{
+		name: "informant",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Informant",
+		initialHp: 2
+	},
+	{
+		name: "muscle",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Muscle",
+		initialHp: 8
+	},
+	{
+		name: "thief",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Thief",
+		initialHp: 2
+	},
+	/* ===== Chokepoint ===== */
+	{
+		name: "chokepoint",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Chokepoint",
+		initialHp: 70
+	},
 	/* ===== Citizen Dawn ===== */
 	{
 		name: "citizendawn",
@@ -660,6 +787,167 @@ module.exports = [
 		inList: true,
 		displayName: "Citizen Winter",
 		initialHp: 4
+	},
+	/* ===== Citizens Hammer and Anvil (Vengeance) ===== */
+	{
+		name: "citizenshammerandanvil",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Citizens Hammer and Anvil (Vengeance)",
+		spawnInstead: ["vengeanceanvil", "vengeancehammer"]
+	},
+	{
+		name: "vengeanceanvil",
+		type: "villain",
+		subtype: "character",
+		inList: false,
+		displayName: "Citizen Anvil",
+		initialHp: 18,
+		spawnTargetOnCreated: ["hammerandshield"],
+		childTargets: ["hammerandshield"]
+	},
+	{
+		name: "vengeancehammer",
+		type: "villain",
+		subtype: "character",
+		inList: false,
+		displayName: "Citizen Hammer",
+		initialHp: 17,
+		childTargets: ["hammerandshield"]
+	},
+	{
+		name: "hammerandshield",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Hammer & Shield",
+		initialHp: 10
+	},
+	/* ===== Deadline ===== */
+	{
+		name: "deadline",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Deadline",
+		initialHp: 80,
+		spawnTargetOnCreated: ["atomicendglaive"],
+		childTargets: ["ataxiasphere", "atomicendglaive", "autoarmorcaster", "pandemoniumkey"]
+	},
+	{
+		name: "ataxiasphere",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Ataxia Sphere",
+		initialHp: 10
+	},
+	{
+		name: "atomicendglaive",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Atomic End-Glaive",
+		initialHp: 10
+	},
+	{
+		name: "autoarmorcaster",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Auto-Armor Caster",
+		initialHp: 10
+	},
+	{
+		name: "pandemoniumkey",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Pandemonium Key",
+		initialHp: 10
+	},
+	/* ===== The Dreamer ===== */
+	{
+		name: "dreamer",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "The Dreamer",
+		initialHp: 6,
+		childTargets: ["darkhero", "graniteoni", "arachnoid", "illusorydemon", "macabrespecter", "treacherousape", "toothfairy", "toymaster", "whipacorn"]
+	},
+	{
+		name: "darkhero",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Dark Hero",
+		initialHp: 5
+	},
+	{
+		name: "graniteoni",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Granite Oni",
+		initialHp: 6
+	},
+	{
+		name: "arachnoid",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Grotesque Arachnoid",
+		initialHp: 8
+	},
+	{
+		name: "illusorydemon",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Illusory Demon",
+		initialHp: 5
+	},
+	{
+		name: "macabrespecter",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Macabre Specter",
+		initialHp: 3
+	},
+	{
+		name: "treacherousape",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Treacherous Ape",
+		initialHp: 2
+	},
+	{
+		name: "toothfairy",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Tooth Fairy",
+		initialHp: 3
+	},
+	{
+		name: "toymaster",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Toy Master",
+		initialHp: 5
+	},
+	{
+		name: "whipacorn",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Whipacorn",
+		initialHp: 7
 	},
 	/* ===== Grand Warlord Voss ===== */
 	{
