@@ -949,6 +949,87 @@ module.exports = [
 		displayName: "Whipacorn",
 		initialHp: 7
 	},
+	/* ===== The Ennead ===== */
+	{
+		name: "ennead",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "The Ennead",
+		childTargets: ["atum", "geb", "isis", "nephthys", "nuit", "osiris", "tefnut", "set", "shu"]
+	},
+	{
+		name: "atum",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Atum",
+		initialHp: 30
+	},
+	{
+		name: "geb",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Geb",
+		initialHp: 32
+	},
+	{
+		name: "isis",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Isis",
+		initialHp: 26
+	},
+	{
+		name: "nephthys",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Nephthys",
+		initialHp: 28
+	},
+	{
+		name: "nuit",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Nuit",
+		initialHp: 28
+	},
+	{
+		name: "osiris",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Osiris",
+		initialHp: 27
+	},
+	{
+		name: "tefnut",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Tefnut",
+		initialHp: 29
+	},
+	{
+		name: "set",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Set",
+		initialHp: 26
+	},
+	{
+		name: "shu",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Shu",
+		initialHp: 24
+	},
 	/* ===== Grand Warlord Voss ===== */
 	{
 		name: "voss",
