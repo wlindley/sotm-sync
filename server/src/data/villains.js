@@ -1030,6 +1030,149 @@ module.exports = [
 		displayName: "Shu",
 		initialHp: 24
 	},
+	/* ===== Ermine (Vengeance) ===== */
+	{
+		name: "ermine",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Ermine (Vengeance)",
+		initialHp: 25,
+		childTargets: ["calypso", "equity", "seer", "tantrum"]
+	},
+	{
+		name: "calypso",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Calypso",
+		initialHp: 11
+	},
+	{
+		name: "equity",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Equity",
+		initialHp: 7
+	},
+	{
+		name: "seer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Seer",
+		initialHp: 9
+	},
+	{
+		name: "tantrum",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Tantrum",
+		initialHp: 5
+	},
+	/* ===== Friction (Vengeance) ===== */
+	{
+		name: "friction",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Friction (Vengeance)",
+		initialHp: 26,
+		spawnTargetOnCreated: ["shockdampeners", "stolengear"],
+		childTargets: ["argentium", "highbrow", "hippo", "revenant", "shockdampeners", "stolengear"]
+	},
+	{
+		name: "argentium",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Argentium",
+		initialHp: 8
+	},
+	{
+		name: "highbrow",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Highbrow",
+		initialHp: 6
+	},
+	{
+		name: "hippo",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Hippo",
+		initialHp: 14
+	},
+	{
+		name: "revenant",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Revenant",
+		initialHp: 10
+	},
+	{
+		name: "shockdampeners",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Shock Dampeners",
+		initialHp: 9
+	},
+	{
+		name: "stolengear",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Stolen Gear",
+		initialHp: 7
+	},
+	/* ===== Fright Train (Vengeance) ===== */
+	{
+		name: "frighttrain",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Fright Train (Vengeance)",
+		initialHp: 35,
+		childTargets: ["choke", "crackjawcrew", "majorflay", "mangrove"]
+	},
+	{
+		name: "choke",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Choke",
+		initialHp: 5
+	},
+	{
+		name: "crackjawcrew",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Crackjaw Crew",
+		initialHp: 11
+	},
+	{
+		name: "majorflay",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Major Flay",
+		initialHp: 7
+	},
+	{
+		name: "mangrove",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Man-Grove",
+		initialHp: 9
+	},
 	/* ===== Grand Warlord Voss ===== */
 	{
 		name: "voss",
