@@ -9,6 +9,30 @@ module.exports = [
 		initialHp: 29
 	},
 	{
+		name: "absolutezero1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Termi-Nation Absolute Zero",
+		initialHp: 25
+	},
+	{
+		name: "absolutezero2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Freedom Five: Absolute Zero",
+		initialHp: 28
+	},
+	{
+		name: "absolutezero3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Freedom Six: Absolute Zero",
+		initialHp: 27
+	},
+	{
 		name: "argentadept0",
 		type: "hero",
 		subtype: "character",
@@ -33,6 +57,14 @@ module.exports = [
 		initialHp: 23
 	},
 	{
+		name: "argentadept3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "XTREME Prime Wardens: Argent Adept",
+		initialHp: 26
+	},
+	{
 		name: "bunker0",
 		type: "hero",
 		subtype: "character",
@@ -46,6 +78,30 @@ module.exports = [
 		subtype: "character",
 		inList: true,
 		displayName: "G.I. Bunker",
+		initialHp: 27
+	},
+	{
+		name: "bunker2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Termi-Nation Bunker",
+		initialHp: 26
+	},
+	{
+		name: "bunker3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Freedom Five Bunker",
+		initialHp: 29
+	},
+	{
+		name: "bunker4",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Bunker, Engine of War",
 		initialHp: 27
 	},
 	{
@@ -64,6 +120,24 @@ module.exports = [
 		inList: true,
 		displayName: "Prime Wardens Captain Cosmic",
 		initialHp: 28,
+		childTargets: ["augmentedally0", "autonomousblade0", "cosmiccrest0", "cosmicweapon0", "dynamicsiphon0", "energybracer0", "vitalityconduit0", "woundingbuffer0"]
+	},
+	{
+		name: "captaincosmic2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Captain Cosmic: Requital",
+		initialHp: 29,
+		childTargets: ["augmentedally0", "autonomousblade0", "cosmiccrest0", "cosmicweapon0", "dynamicsiphon0", "energybracer0", "vitalityconduit0", "woundingbuffer0"]
+	},
+	{
+		name: "captaincosmic3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "XTREME Prime Wardens: Captain Cosmic",
+		initialHp: 26,
 		childTargets: ["augmentedally0", "autonomousblade0", "cosmiccrest0", "cosmicweapon0", "dynamicsiphon0", "energybracer0", "vitalityconduit0", "woundingbuffer0"]
 	},
 	{
@@ -91,6 +165,14 @@ module.exports = [
 		initialHp: 29
 	},
 	{
+		name: "expatriette1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Dark Watch: Expatriette",
+		initialHp: 30
+	},
+	{
 		name: "fanatic0",
 		type: "hero",
 		subtype: "character",
@@ -107,12 +189,44 @@ module.exports = [
 		initialHp: 29
 	},
 	{
+		name: "fanatic2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "XTREME Prime Wardens: Fanatic",
+		initialHp: 28
+	},
+	{
+		name: "fanatic3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Redeemer Fanatic",
+		initialHp: 31
+	},
+	{
 		name: "guise0",
 		type: "hero",
 		subtype: "character",
 		inList: true,
 		displayName: "Guise",
 		initialHp: 27
+	},
+	{
+		name: "guise1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Santa Guise",
+		initialHp: 25
+	},
+	{
+		name: "guise2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Completionist Guise",
+		initialHp: 26
 	},
 	{
 		name: "haka0",
@@ -129,6 +243,22 @@ module.exports = [
 		inList: true,
 		displayName: "Prime Wardens Haka",
 		initialHp: 35
+	},
+	{
+		name: "haka2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "The Eternal Haka",
+		initialHp: 33
+	},
+	{
+		name: "haka3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "XTREME Prime Wardens: Haka",
+		initialHp: 32
 	},
 	{
 		name: "knyfe0",
@@ -163,12 +293,44 @@ module.exports = [
 		initialHp: 30
 	},
 	{
+		name: "legacy2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Young Legacy",
+		initialHp: 30
+	},
+	{
+		name: "legacy3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Freedom Five: Legacy",
+		initialHp: 32
+	},
+	{
+		name: "legacy4",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "America's Cleverest Legacy",
+		initialHp: 32
+	},
+	{
 		name: "misterfixer0",
 		type: "hero",
 		subtype: "character",
 		inList: true,
 		displayName: "Mister Fixer",
 		initialHp: 28
+	},
+	{
+		name: "misterfixer1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Dark Watch: Mister Fixer",
+		initialHp: 29
 	},
 	{
 		name: "naturalist0",
@@ -195,12 +357,28 @@ module.exports = [
 		initialHp: 27
 	},
 	{
+		name: "nightmist1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Dark Watch: Nightmist",
+		initialHp: 28
+	},
+	{
 		name: "omnitronx0",
 		type: "hero",
 		subtype: "character",
 		inList: true,
 		displayName: "Omnitron-X",
 		initialHp: 25
+	},
+	{
+		name: "omnitronx1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Omnitron-U",
+		initialHp: 24
 	},
 	{
 		name: "parse0",
@@ -211,12 +389,36 @@ module.exports = [
 		initialHp: 26
 	},
 	{
+		name: "parse1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Parse: Fugue State",
+		initialHp: 27
+	},
+	{
 		name: "ra0",
 		type: "hero",
 		subtype: "character",
 		inList: true,
 		displayName: "The Mighty Ra, God of the Sun",
 		initialHp: 30
+	},
+	{
+		name: "ra1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Ra, Horus of the Two Horizons",
+		initialHp: 29
+	},
+	{
+		name: "ra2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Ra, Setting Sun",
+		initialHp: 28
 	},
 	{
 		name: "scholar0",
@@ -259,6 +461,14 @@ module.exports = [
 		initialHp: 31
 	},
 	{
+		name: "setback1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Dark Watch: Setback",
+		initialHp: 31
+	},
+	{
 		name: "skyscraper0",
 		type: "hero",
 		subtype: "character",
@@ -267,12 +477,44 @@ module.exports = [
 		initialHp: 33
 	},
 	{
+		name: "skyscraper1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Sky-Scraper, Extremist",
+		initialHp: 32
+	},
+	{
 		name: "tachyon0",
 		type: "hero",
 		subtype: "character",
 		inList: true,
 		displayName: "Tachyon, the Quickest Woman on Earth",
 		initialHp: 27
+	},
+	{
+		name: "tachyon1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Super-Scientific Tachyon",
+		initialHp: 26
+	},
+	{
+		name: "tachyon2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Freedom Five: Tachyon",
+		initialHp: 26
+	},
+	{
+		name: "tachyon3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Team Leader Tachyon",
+		initialHp: 28
 	},
 	{
 		name: "tempest0",
@@ -291,12 +533,46 @@ module.exports = [
 		initialHp: 27
 	},
 	{
+		name: "tempest2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Sacrifice Tempest",
+		initialHp: 25
+	},
+	{
+		name: "tempest3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "EXTREME Prime Wardens: Tempest",
+		initialHp: 24
+	},
+	{
 		name: "unity0",
 		type: "hero",
 		subtype: "character",
 		inList: true,
 		displayName: "Unity",
 		initialHp: 26,
+		childTargets: ["beebot0", "championbot0", "cryobot0", "platformbot0", "raptorbot0", "stealthbot0", "swiftbot0", "turretbot0"]
+	},
+	{
+		name: "unity1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Termi-Nation Unity",
+		initialHp: 27,
+		childTargets: ["beebot0", "championbot0", "cryobot0", "platformbot0", "raptorbot0", "stealthbot0", "swiftbot0", "turretbot0"]
+	},
+	{
+		name: "unity2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Golem Unity",
+		initialHp: 25,
 		childTargets: ["beebot0", "championbot0", "cryobot0", "platformbot0", "raptorbot0", "stealthbot0", "swiftbot0", "turretbot0"]
 	},
 	{
@@ -309,12 +585,54 @@ module.exports = [
 		childTargets: ['decoyprojection0']
 	},
 	{
+		name: "visionary1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Dark Visionary",
+		initialHp: 25,
+		childTargets: ['decoyprojection0']
+	},
+	{
+		name: "visionary2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Visionary Unleashed",
+		initialHp: 27,
+		childTargets: ['decoyprojection0']
+	},
+	{
 		name: "wraith0",
 		type: "hero",
 		subtype: "character",
 		inList: true,
 		displayName: "Mystery Comics Wraith",
 		initialHp: 26
+	},
+	{
+		name: "wraith1",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Rook City Wraith",
+		initialHp: 27
+	},
+	{
+		name: "wraith2",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "Freedom Five: Wraith",
+		initialHp: 28
+	},
+	{
+		name: "wraith3",
+		type: "hero",
+		subtype: "character",
+		inList: true,
+		displayName: "The Price of Freedom Wraith",
+		initialHp: 29
 	},
 
 	/* ===== Sentinels Characters ===== */
