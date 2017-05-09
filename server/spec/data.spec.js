@@ -8,6 +8,10 @@ let validSubType = {
 	asymmetricMatch: (actual) => 'character' === actual || 'target' === actual
 };
 
+let validHp = {
+	asymmetricMatch: (actual) => Number.isInteger(actual) || 'H' === actual
+};
+
 describe('Data Validation', () => {
 	it('no duplicate template names', () => {
 		let names = data.map((template) => template.name);
@@ -29,8 +33,7 @@ describe('Data Validation', () => {
 			expect(template.inList).toEqual(jasmine.any(Boolean), 'Template ' + template.name + ' does not have an inList property');
 
 			if (template.initialHp) {
-				expect(template.initialHp).toEqual(jasmine.any(Number), 'Template ' + template.name + ' has a non-Number initialHp');
-				expect(Number.isInteger(template.initialHp)).toBeTruthy('Template ' + template.name + ' has a non-integer initialHp');
+				expect(template.initialHp).toEqual(validHp, 'Template ' + template.name + ' has invalid initialHp');
 			}
 
 			if (template.childTargets) {
@@ -46,6 +49,38 @@ describe('Data Validation', () => {
 				for (let target of template.spawnInstead) {
 					expect(target).toEqual(jasmine.any(String), 'Template ' + template.name + ' has a non-string spawn instead target');
 					expect(allTemplateNames.includes(target)).toBeTruthy('Template ' + template.name + ' has unknown spawn instead target ' + target);
+				}
+			}
+
+			if (template.spawnTargetOnCreated) {
+				expect(template.spawnTargetOnCreated).toEqual(jasmine.any(Array), 'Template ' + template.name + ' has invalid spawn target on created list');
+				for (let target of template.spawnTargetOnCreated) {
+					expect(target).toEqual(jasmine.any(String), 'Template ' + template.name + ' has a non-string spawn on created target');
+					expect(allTemplateNames.includes(target)).toBeTruthy('Template ' + template.name + ' has unknown spawn on created target');
+				}
+			}
+
+			if (template.spawnCharacterOnCreated) {
+				expect(template.spawnCharacterOnCreated).toEqual(jasmine.any(Array), 'Template ' + template.name + ' has invalid spawn character on created list');
+				for (let target of template.spawnCharacterOnCreated) {
+					expect(target).toEqual(jasmine.any(String), 'Template ' + template.name + ' has a non-string spawn on created character');
+					expect(allTemplateNames.includes(target)).toBeTruthy('Template ' + template.name + ' has unknown spawn on created character');
+				}
+			}
+
+			if (template.spawnTargetOnDestroyed) {
+				expect(template.spawnTargetOnDestroyed).toEqual(jasmine.any(Array), 'Template ' + template.name + ' has invalid spawn target on destroyed list');
+				for (let target of template.spawnTargetOnDestroyed) {
+					expect(target).toEqual(jasmine.any(String), 'Template ' + template.name + ' has a non-string spawn on destroyed target');
+					expect(allTemplateNames.includes(target)).toBeTruthy('Template ' + template.name + ' has unknown spawn on destroyed target');
+				}
+			}
+
+			if (template.spawnCharacterOnDestroyed) {
+				expect(template.spawnCharacterOnDestroyed).toEqual(jasmine.any(Array), 'Template ' + template.name + ' has invalid spawn character on destroyed list');
+				for (let target of template.spawnCharacterOnDestroyed) {
+					expect(target).toEqual(jasmine.any(String), 'Template ' + template.name + ' has a non-string spawn on destroyed character');
+					expect(allTemplateNames.includes(target)).toBeTruthy('Template ' + template.name + ' has unknown spawn on destroyed character');
 				}
 			}
 		}
