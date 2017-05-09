@@ -1173,6 +1173,104 @@ module.exports = [
 		displayName: "Man-Grove",
 		initialHp: 9
 	},
+	/* ===== Gloomweaver ===== */
+	{
+		name: "gloomweaver",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Gloomweaver",
+		initialHp: 90,
+		childTargets: ["chosendisciple", "crimsonpin", "cursedacolyte", "drumofdespair", "grimoireofcurses", "indigopin", "ophidia", "pouchofbones", "profanezealot", "sablepin", "zombieservant"]
+	},
+	{
+		name: "chosendisciple",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Chosen Disciple",
+		initialHp: 7
+	},
+	{
+		name: "crimsonpin",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Crimson Pin",
+		initialHp: 9
+	},
+	{
+		name: "cursedacolyte",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Cursed Acolyte",
+		initialHp: 6
+	},
+	{
+		name: "drumofdespair",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Drum of Despair",
+		initialHp: 25
+	},
+	{
+		name: "grimoireofcurses",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Grimoire of Curses",
+		initialHp: 25
+	},
+	{
+		name: "indigopin",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Indigo Pin",
+		initialHp: 9
+	},
+	{
+		name: "ophidia",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Ophidia, the Deceiver",
+		initialHp: 8
+	},
+	{
+		name: "pouchofbones",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Pouch of Bones",
+		initialHp: 25
+	},
+	{
+		name: "profanezealot",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Profane Zealot",
+		initialHp: 5
+	},
+	{
+		name: "sablepin",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Sable Pin",
+		initialHp: 9
+	},
+	{
+		name: "zombieservant",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Zombie Servant",
+		initialHp: 2
+	},
 	/* ===== Grand Warlord Voss ===== */
 	{
 		name: "voss",
@@ -1295,6 +1393,222 @@ module.exports = [
 		displayName: "Quark-Drive Translocator",
 		initialHp: 10
 	},
+	/* ===== Greazer (Vengeance) ===== */
+	{
+		name: "greazer",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Greazer (Vengeance)",
+		initialHp: 27,
+		spawnTargetOnCreated: ["pompadour"],
+		childTargets: ["electroshackles", "galactra", "hypdisplacer", "impactneutralizer", "pompadour", "pinklady", "rahazar", "thermobaricmine"]
+	},
+	{
+		name: "electroshackles",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Electroshackles",
+		initialHp: 4
+	},
+	{
+		name: "galactra",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Galactra",
+		initialHp: 9
+	},
+	{
+		name: "hypdisplacer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "H.Y.P. Displacer",
+		initialHp: 4
+	},
+	{
+		name: "impactneutralizer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Impact Neutralizer",
+		initialHp: 4
+	},
+	{
+		name: "pompadour",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Impeccable Pompadour",
+		initialHp: 4
+	},
+	{
+		name: "pinklady",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Pink Lady",
+		initialHp: 12
+	},
+	{
+		name: "rahazar",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Rahazar",
+		initialHp: 7
+	},
+	{
+		name: "thermobaricmine",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Thermobaric Mine",
+		initialHp: 4
+	},
+	/* ===== Infinitor ===== */
+	{
+		name: "infinitor",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Infinitor",
+		initialHp: 65,
+		childTargets: ["crushingcage", "lambentreaper", "ocularswarm", "recalescenthellion", "twistedmiscreation"]
+	},
+	{
+		name: "crushingcage",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Crushing Cage",
+		initialHp: 4
+	},
+	{
+		name: "lambentreaper",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Lambent Reaper",
+		initialHp: 4
+	},
+	{
+		name: "ocularswarm",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Ocular Swarm",
+		initialHp: 4
+	},
+	{
+		name: "recalescenthellion",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Recalescent Hellion",
+		initialHp: 4
+	},
+	{
+		name: "twistedmiscreation",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Twisted Miscreation",
+		initialHp: 4
+	},
+	/* ===== Iron Legacy ===== */
+	{
+		name: "ironlegacy",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Iron Legacy",
+		initialHp: 32
+	},
+	/* ===== Kaargra Warfang ===== */
+	{
+		name: "kaargra",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Kaargra Warfang",
+		initialHp: 40,
+		childTargets: ["rvelos", "dymkharn", "idesa", "andolin", "orrim", "tarnis", "perith", "ssdari", "tryragon"]
+	},
+	{
+		name: "rvelos",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Ashclaw R'velos",
+		initialHp: 16
+	},
+	{
+		name: "dymkharn",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Dymkharn the Fearless",
+		initialHp: 10
+	},
+	{
+		name: "idesa",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Idesa the Adroit",
+		initialHp: 10
+	},
+	{
+		name: "andolin",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Impasssable Andolin",
+		initialHp: 14
+	},
+	{
+		name: "orrim",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Orrim Hiveminded",
+		initialHp: 12
+	},
+	{
+		name: "tarnis",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Provocator Tarnis",
+		initialHp: 18
+	},
+	{
+		name: "perith",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "SSoulslayer Perith",
+		initialHp: 14
+	},
+	{
+		name: "ssdari",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "S'sdari the Bloody",
+		initialHp: 12
+	},
+	{
+		name: "tryragon",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Tryragon-Rex",
+		initialHp: 16
+	},
 	/* ===== Kismet ===== */
 	{
 		name: "kismet",
@@ -1406,6 +1720,82 @@ module.exports = [
 		displayName: "Unkindness of Ravens",
 		initialHp: 1
 	},
+	/* ===== Miss Information ===== */
+	{
+		name: "missinformation",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Miss Information",
+		initialHp: 45,
+		childTargets: ["catintree", "diplomaticenvoy", "ladyinstreet"]
+	},
+	{
+		name: "catintree",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "\"Cat\" Stuck in a Tree",
+		initialHp: 10
+	},
+	{
+		name: "diplomaticenvoy",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "\"Dipolmatic\" Envoy",
+		initialHp: 14
+	},
+	{
+		name: "ladyinstreet",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "\"Old Lady\" in the Street",
+		initialHp: 12
+	},
+	/* ===== Miss Information (Vengeance) ===== */
+	{
+		name: "vengeancemissinformation",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Miss Information (Vengeance)",
+		initialHp: 23,
+		childTargets: ["balarian", "greengrosser", "heartbreaker", "judgemental"]
+	},
+	{
+		name: "balarian",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Balarian",
+		initialHp: 12
+	},
+	{
+		name: "greengrosser",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Green Grosser",
+		initialHp: 6
+	},
+	{
+		name: "heartbreaker",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Heartbreaker",
+		initialHp: 10
+	},
+	{
+		name: "judgemental",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Judge Mental",
+		initialHp: 8
+	},
 	/* ===== Omnitron ===== */
 	{
 		name: "omnitron",
@@ -1448,6 +1838,40 @@ module.exports = [
 		displayName: "S-85 Repair Drone",
 		initialHp: 4
 	},
+	/* ===== The Operative (Vengeance) ===== */
+	{
+		name: "vengeanceoperative",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "The Operative (Vengeance)",
+		initialHp: 27,
+		childTargets: ["idolater", "overbrook", "profpollution"]
+	},
+	{
+		name: "idolater",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Idolater",
+		initialHp: 3
+	},
+	{
+		name: "overbrook",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Mayor Overbrook",
+		initialHp: 6
+	},
+	{
+		name: "profpollution",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Professor Pollution",
+		initialHp: 9
+	},
 	/* ===== Plague Rat ===== */
 	{
 		name: "plaguerat",
@@ -1467,6 +1891,182 @@ module.exports = [
 		displayName: "Plague Locus",
 		initialHp: 13
 	},
+	/* ===== Plague Rat (Vengeance) ===== */
+	{
+		name: "vengeanceplaguerat",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Plague Rat (Vengeance)",
+		initialHp: 29,
+		childTargets: ["revanalyst", "revneutralizer", "revrestrainer", "revtanker"]
+	},
+	{
+		name: "revanalyst",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Revocorp Analyst",
+		initialHp: 4
+	},
+	{
+		name: "revneutralizer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Revocorp Neutralizer",
+		initialHp: 6
+	},
+	{
+		name: "revrestrainer",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Revocorp Restrainer",
+		initialHp: 5
+	},
+	{
+		name: "revtanker",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Revocorp Tanker",
+		initialHp: 7
+	},
+	/* ===== Progeny ===== */
+	{
+		name: "progeny",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Progeny",
+		initialHp: 90
+	},
+	/* ===== Proletariat (Vengeance) ===== */
+	{
+		name: "proletariat",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Proletariat",
+		initialHp: 20,
+		spawnTargetOnCreated: ["targetproletariat", "targetproletariat"],
+		childTargets: ["doctusser", "hermetic", "targetproletariat", "radioactivist", "vyktor"]
+	},
+	{
+		name: "doctusser",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Doc Tusser",
+		initialHp: 8
+	},
+	{
+		name: "hermetic",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Hermetic",
+		initialHp: 6
+	},
+	{
+		name: "targetproletariat",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Proletariat",
+		initialHp: 6
+	},
+	{
+		name: "radioactivist",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "The Radioactivist",
+		initialHp: 10
+	},
+	{
+		name: "vyktor",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Vyktor",
+		initialHp: 4
+	},
+	/* ===== Sergeant Steel ===== */
+	{
+		name: "sergeantsteel",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Sergeant Steel",
+		initialHp: 22,
+		childTargets: ["arsonator", "battlemedic", "bombspecialist", "espionagent", "fieldinventor", "infiltraionist", "megagunner", "sharpshooter"]
+	},
+	{
+		name: "arsonator",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Arsonator",
+		initialHp: 8
+	},
+	{
+		name: "battlemedic",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Battle Medic",
+		initialHp: 6
+	},
+	{
+		name: "bombspecialist",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Bomb Specialist",
+		initialHp: 6
+	},
+	{
+		name: "espionagent",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Espionagent",
+		initialHp: 4
+	},
+	{
+		name: "fieldinventor",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Field Inventor",
+		initialHp: 4
+	},
+	{
+		name: "infiltraionist",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Infiltrationist",
+		initialHp: 4
+	},
+	{
+		name: "megagunner",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Mega-Gunner",
+		initialHp: 8
+	},
+	{
+		name: "sharpshooter",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Sharpshooter",
+		initialHp: 6
+	},
 	/* ===== Spite ===== */
 	{
 		name: "spite",
@@ -1476,4 +2076,22 @@ module.exports = [
 		displayName: "Spite",
 		initialHp: 80
 	},
+	/* ===== Wager Master ===== */
+	{
+		name: "wagermaster",
+		type: "villain",
+		subtype: "character",
+		inList: true,
+		displayName: "Wager Master",
+		initialHp: 51,
+		childTargets: ["wagelings"]
+	},
+	{
+		name: "wagelings",
+		type: "villain",
+		subtype: "target",
+		inList: true,
+		displayName: "Wagelings",
+		initialHp: 6
+	}
 ];
