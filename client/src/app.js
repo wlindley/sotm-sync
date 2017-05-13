@@ -1,14 +1,15 @@
 import {Api} from './api';
+import BuildInfo from './build-info';
 
 export class App {
 	static inject() { return [Api]; }
 
 	constructor(api) {
-		this.api = api;
+		this._api = api;
 	}
 
 	activate() {
-		this.api.init();
+		this._api.init();
 	}
 
 	configureRouter(config, router) {
@@ -22,5 +23,9 @@ export class App {
 
 	get isLoading() {
 		return this.router.isNavigating;
+	}
+
+	get version() {
+		return BuildInfo.version;
 	}
 }
