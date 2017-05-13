@@ -13,6 +13,7 @@ script:
   - npm run all
   - popd
   - pushd client
+  - echo "export default {version: '$TRAVIS_COMMIT'};" > src/build-info.js
   - au build
   - au test
   - au build --env prod
