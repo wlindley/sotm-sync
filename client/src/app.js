@@ -6,10 +6,14 @@ export class App {
 
 	constructor(api) {
 		this._api = api;
+		this.userCount = 1;
+		this.gameCount = 1;
 	}
 
 	activate() {
 		this._api.init();
+		this._updateStatus();
+		setInterval(() => this._updateStatus(), 30 * 1000);
 	}
 
 	configureRouter(config, router) {
@@ -27,5 +31,14 @@ export class App {
 
 	get version() {
 		return BuildInfo.version;
+	}
+
+	_updateStatus() {
+		this._api.getStatus().then((status) => {
+			this.userCount = status.users;
+			this.gameCount = status.games;
+		}).catch((err) => {
+			console.log('Error retrieving status:', err);
+		});
 	}
 }
