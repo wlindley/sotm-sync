@@ -20,7 +20,7 @@ describe('DestroyChildrenLifecycle', () => {
 
 	describe('destroyed', () => {
 		it('destroys child entities', () => {
-			let state = [
+			let state = {objects: [
 				{
 					id: 2,
 					name: 'unity',
@@ -35,8 +35,8 @@ describe('DestroyChildrenLifecycle', () => {
 					name: 'platformbot',
 					parentId: 2
 				}
-			];
-			let entity = state[0];
+			]};
+			let entity = state.objects[0];
 			this.game.serializeState.and.returnValue(state);
 			this.testObj.destroyed(entity, this.game);
 			expect(this.game.removeEntity).toHaveBeenCalledWith(5);
