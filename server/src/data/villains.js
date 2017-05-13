@@ -262,7 +262,7 @@ module.exports = [
 		name: "baronbladescientist",
 		type: "villain",
 		subtype: "character",
-		inList: true,
+		inList: false,
 		displayName: "Baron Blade - Vengeful Mad Scientist",
 		initialHp: 30,
 		childTargets: ["bladebattalion", "elementalredistributor", "defenseplatform", "remoteturret"]
