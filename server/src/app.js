@@ -3,6 +3,7 @@ const data = require('./data');
 const InstantiatorFactory = require('./instantiator-factory');
 const LifeCycleFactory = require('./lifecycle-factory');
 
+const process = require('process');
 const path = require('path');
 const express = require('express');
 const uuid = require('uuid/v4');
@@ -13,6 +14,9 @@ const io = require('socket.io')(server);
 const instantiator = new InstantiatorFactory(data).build();
 const lifecycle = new LifeCycleFactory().build();
 const games = new Map();
+let staticFilePath = '../client';
+if ('development' === process.env.NODE_ENV)
+	staticFilePath = '../../client';
 
 let broadcastGameState = (gameId) => {
 	io.to(gameId).emit('game-state', {state: games.get(gameId).serializeState()});
@@ -24,7 +28,7 @@ let createGame = (gameId) => {
 	return game;
 };
 
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, staticFilePath)));
 
 app.post('/create-game', (req, res) => {
 	res.json({
