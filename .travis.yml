@@ -3,34 +3,12 @@ node_js:
   - "node"
   - "6"
 install:
-  - pushd server && npm install
-  - popd
-  - pushd client && npm install
-  - popd
-  - npm install -g aurelia-cli
+  - ./install.sh
 script:
-  - pushd server
-  - npm run all
-  - popd
-  - pushd client
-  - echo "export default {version: '$TRAVIS_COMMIT'};" > src/build-info.js
-  - au build
-  - au test
-  - au build --env prod
-  - popd
+  - ./build-and-test.sh
 
 before_deploy:
-  - mkdir -p deploy/client
-  - cp -r server/* deploy/
-  - cp client/index.html deploy/client/
-  - cp client/favicon.ico deploy/client/
-  - cp -r client/scripts deploy/client/scripts
-  - cp -r client/bootstrap deploy/client/bootstrap
-  - rm -rf deploy/node_modules
-  - rm -rf deploy/spec
-  - pushd deploy
-  - zip -r ../artifact.zip *
-  - popd
+  - ./predeploy.sh
   
 deploy:
   - provider: elasticbeanstalk
