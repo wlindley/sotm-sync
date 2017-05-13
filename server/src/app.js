@@ -40,6 +40,15 @@ app.get('/data', (req, res) => {
 	res.json(data);
 });
 
+app.get('/status', (req, res) => {
+	io.sockets.clients((err, clients) => {
+		res.json({
+			games: games.size,
+			users: clients.length
+		});
+	});
+});
+
 io.on('connection', (socket) => {
 	socket.on('join-game', (args) => {
 		if (!games.has(args.gameId))
