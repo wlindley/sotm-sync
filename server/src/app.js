@@ -77,6 +77,6 @@ io.on('connection', (socket) => {
 	});
 });
 
-server.listen(process.env.PORT || 80, () => {
+server.listen(process.env.PORT || 8080, () => {
 	console.log('SotM Sync listening on http://%s:%s', server.address().address, server.address().port);
 });
