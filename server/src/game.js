@@ -45,6 +45,14 @@ class Game extends EventEmitter {
 		}
 	}
 
+	updateNotes(entityId, notes) {
+		let entity = this._getEntityById(entityId);
+		if (entity && notes) {
+			entity.notes = notes;
+			this._dispatchChanged();
+		}
+	}
+
 	_getEntityById(entityId) {
 		return this._objects.find(obj => entityId === obj.id);
 	}
