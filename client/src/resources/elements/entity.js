@@ -12,6 +12,7 @@ export let Entity = decorators(
 			select: (name) => this.createTarget(name)
 		};
 		this.templates = [];
+		this._notes = null;
 		this.api.retrieveData().then((templates) => this.templates = templates);
 	}
 
@@ -56,6 +57,14 @@ export let Entity = decorators(
 		return this.data.childTargets && 0 < this.data.childTargets.length;
 	}
 
+	get notes() {
+		return this._notes;
+	}
+
+	set notes(value) {
+		this._notes = value;
+	}
+
 	incrementHp() {
 		this.api.modifyHp(this.id, 1);
 	}
@@ -70,5 +79,14 @@ export let Entity = decorators(
 
 	remove() {
 		this.api.removeEntity(this.id);
+	}
+
+	completeNote() {
+		this.api.updateNotes(this.id, this._notes);
+	}
+
+	dataChanged(newValue) {
+		this.data = newValue;
+		this._notes = this.data.notes;
 	}
 });
