@@ -83,7 +83,7 @@ io.on('connection', (socket) => {
 });
 
 const cleanupGames = () => {
-	for (let [gameId, game] of games) {
+	for (let [gameId] of games) {
 		io.in(gameId).clients((err, socketIds) => {
 			if (!socketIds || 0 >= socketIds.length)
 				games.delete(gameId);
