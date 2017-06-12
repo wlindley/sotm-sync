@@ -266,6 +266,14 @@ describe('Game', () => {
 			expect(this.testObj.serializeState().objects[0].notes).toBe(expectedNotes);
 		});
 
+		it('does assign notes when notes are empty string', () => {
+			let expectedNotes = 'a changing note';
+			this.testObj.createCharacter('legacy');
+			this.testObj.updateNotes(0, expectedNotes);
+			this.testObj.updateNotes(0, '');
+			expect(this.testObj.serializeState().objects[0].notes).toBe('');
+		});
+
 		it('dispatches changed event', () => {
 			let expectedNotes = 'this is another note';
 			let dispatchCount = 0;

@@ -47,7 +47,7 @@ class Game extends EventEmitter {
 
 	updateNotes(entityId, notes) {
 		let entity = this._getEntityById(entityId);
-		if (entity && notes) {
+		if (entity && undefined !== notes) {
 			entity.notes = notes;
 			this._dispatchChanged();
 		}
