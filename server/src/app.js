@@ -11,6 +11,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+const cleanupInterval = 1000 * 60 * 15;
 const instantiator = new InstantiatorFactory(data).build();
 const lifecycle = new LifeCycleFactory().build();
 const games = new Map();
@@ -80,6 +81,17 @@ io.on('connection', (socket) => {
 		games.get(args.gameId).updateNotes(args.entityId, args.notes);
 	});
 });
+
+const cleanupGames = () => {
+	for (let [gameId] of games) {
+		io.in(gameId).clients((err, socketIds) => {
+			if (!socketIds || 0 >= socketIds.length)
+				games.delete(gameId);
+		});
+	}
+};
+
+setInterval(cleanupGames, cleanupInterval);
 
 server.listen(process.env.PORT || 8080, () => {
 	console.log('SotM Sync listening on http://%s:%s', server.address().address, server.address().port);
