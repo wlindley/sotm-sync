@@ -75,8 +75,12 @@ io.on('connection', (socket) => {
 	socket.on('remove-entity', (args) => {
 		games.get(args.gameId).removeEntity(args.entityId);
 	});
+
+	socket.on('update-notes', (args) => {
+		games.get(args.gameId).updateNotes(args.entityId, args.notes);
+	});
 });
 
-server.listen(process.env.PORT || 80, () => {
+server.listen(process.env.PORT || 8080, () => {
 	console.log('SotM Sync listening on http://%s:%s', server.address().address, server.address().port);
 });

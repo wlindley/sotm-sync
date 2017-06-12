@@ -239,4 +239,48 @@ describe('Game', () => {
 			expect(dispatchCount).toBe(2);
 		});
 	});
+
+	describe('updateNotes', () => {
+		beforeEach(() => {
+			this.templateInstantiator.instantiate.and.returnValue([{name: 'legacy', initialHp: 5, currentHp: 5, notes: ''}]);
+		});
+
+		it('stores given value in notes field', () => {
+			let expectedNotes = 'this is a note';
+			this.testObj.createCharacter('legacy');
+			this.testObj.updateNotes(0, expectedNotes);
+			expect(this.testObj.serializeState().objects[0].notes).toBe(expectedNotes);
+		});
+
+		it('does nothing when entity does not exist', () => {
+			expect(() => {
+				this.testObj.updateNotes(0, 'some notes');
+			}).not.toThrow();
+		});
+
+		it('does nothing when notes are undefined', () => {
+			let expectedNotes = 'an unchanging note';
+			this.testObj.createCharacter('legacy');
+			this.testObj.updateNotes(0, expectedNotes);
+			this.testObj.updateNotes(0, undefined);
+			expect(this.testObj.serializeState().objects[0].notes).toBe(expectedNotes);
+		});
+
+		it('does assign notes when notes are empty string', () => {
+			let expectedNotes = 'a changing note';
+			this.testObj.createCharacter('legacy');
+			this.testObj.updateNotes(0, expectedNotes);
+			this.testObj.updateNotes(0, '');
+			expect(this.testObj.serializeState().objects[0].notes).toBe('');
+		});
+
+		it('dispatches changed event', () => {
+			let expectedNotes = 'this is another note';
+			let dispatchCount = 0;
+			this.testObj.on('changed', () => dispatchCount++);
+			this.testObj.createCharacter('legacy');
+			this.testObj.updateNotes(0, expectedNotes);
+			expect(dispatchCount).toBe(2);
+		});
+	});
 });

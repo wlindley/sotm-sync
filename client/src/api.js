@@ -56,6 +56,10 @@ export class Api {
 		this.socket.emit('remove-entity', {gameId: this.gameId, entityId: entityId});
 	}
 
+	updateNotes(entityId, notes) {
+		this.socket.emit('update-notes', {gameId: this.gameId, entityId: entityId, notes: notes});
+	}
+
 	getStatus() {
 		return new Promise((resolve, reject) => {
 			this._fetch('status').then(data => {

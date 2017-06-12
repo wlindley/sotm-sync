@@ -17,5 +17,9 @@
 		</p>
 
 		<dropdown-button label="Create Target" options.bind="targets" delegates.bind="createTargetDelegates" if.bind="showTargetCreationDropdown"></dropdown-button>
+
+		<div class="form-group">
+			<textarea class="form-control" rows="3" placeholder="Notes" blur.trigger="completeNote()" input.delegate="notes = $event.target.value" value.one-way="notes"></textarea>
+		</div>
 	</div>
 </template>
