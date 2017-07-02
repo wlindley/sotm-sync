@@ -46,26 +46,26 @@ describe('DestroyChildrenLifecycle', () => {
 
 	it('does not destroy child entities if parent has doNotDestroyChildrenOnDeath', () => {
 		let state = {objects: [
-				{
-					id: 2,
-					name: 'unity',
-					doNotDestroyChildrenOnDeath: true
-				},
-				{
-					id: 5,
-					name: 'raptorbot',
-					parentId: 2
-				},
-				{
-					id: 7,
-					name: 'platformbot',
-					parentId: 2
-				}
-			]};
-			let entity = state.objects[0];
-			this.game.serializeState.and.returnValue(state);
-			this.testObj.destroyed(entity, this.game);
-			expect(this.game.removeEntity).not.toHaveBeenCalledWith(5);
-			expect(this.game.removeEntity).not.toHaveBeenCalledWith(7);
+			{
+				id: 2,
+				name: 'unity',
+				doNotDestroyChildrenOnDeath: true
+			},
+			{
+				id: 5,
+				name: 'raptorbot',
+				parentId: 2
+			},
+			{
+				id: 7,
+				name: 'platformbot',
+				parentId: 2
+			}
+		]};
+		let entity = state.objects[0];
+		this.game.serializeState.and.returnValue(state);
+		this.testObj.destroyed(entity, this.game);
+		expect(this.game.removeEntity).not.toHaveBeenCalledWith(5);
+		expect(this.game.removeEntity).not.toHaveBeenCalledWith(7);
 	});
 });

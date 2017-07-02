@@ -13,7 +13,7 @@ class DestroyChildrenLifecycle {
 
 	destroyed(entity, game) {
 		if (!shouldRemoveChildrenOf(entity))
-			return
+			return;
 		let state = game.serializeState();
 		for (let otherEntity of state.objects)
 			if (isChildOf(otherEntity, entity))
