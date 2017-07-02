@@ -256,7 +256,8 @@ module.exports = [
 		displayName: "Baron Blade - T.I.B. Inventor",
 		initialHp: 40,
 		childTargets: ["bladebattalion", "elementalredistributor", "defenseplatform", "remoteturret"],
-		spawnCharacterOnDestroyed: ["baronbladescientist"]
+		spawnCharacterOnDestroyed: ["baronbladescientist"],
+		doNotDestroyChildrenOnDeath: true
 	},
 	{
 		name: "baronbladescientist",
